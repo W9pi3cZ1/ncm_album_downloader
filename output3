@@ -1,0 +1,175 @@
+AlbumInfo {
+    album: AlbumDetail {
+        name: "Faint Light EP",
+        pic_url: "https://p4.music.126.net/yMFUL10f-swtzcQaTlnrtg==/18556457743384803.jpg",
+        publish_time: 1477756800000,
+        company: "wavforme",
+        artists: [
+            ArtistDetail {
+                id: 160512,
+                name: "Taishi",
+            },
+            ArtistDetail {
+                id: 1137229,
+                name: "wavforme",
+            },
+        ],
+    },
+    songs: [
+        SongDetailAl {
+            d: SongDetail {
+                id: 442898844,
+                name: "Introduction (Original Mix)",
+                ar: [
+                    SongArtist {
+                        id: 160512,
+                        name: "Taishi",
+                    },
+                ],
+                al: SongAlbum {
+                    pic_url: "https://p3.music.126.net/yMFUL10f-swtzcQaTlnrtg==/18556457743384803.jpg",
+                },
+                no: 1,
+                cd: DiscInfo {
+                    number: Some(
+                        1,
+                    ),
+                    total: Some(
+                        1,
+                    ),
+                    subtitle: Some(
+                        "",
+                    ),
+                    raw: "1",
+                },
+            },
+            privilege: Privilege {
+                pl_level: JyEffect,
+            },
+        },
+        SongDetailAl {
+            d: SongDetail {
+                id: 442898845,
+                name: "Faint Light (Original Mix)",
+                ar: [
+                    SongArtist {
+                        id: 160512,
+                        name: "Taishi",
+                    },
+                ],
+                al: SongAlbum {
+                    pic_url: "https://p4.music.126.net/yMFUL10f-swtzcQaTlnrtg==/18556457743384803.jpg",
+                },
+                no: 1,
+                cd: DiscInfo {
+                    number: Some(
+                        1,
+                    ),
+                    total: Some(
+                        1,
+                    ),
+                    subtitle: Some(
+                        "",
+                    ),
+                    raw: "1",
+                },
+            },
+            privilege: Privilege {
+                pl_level: JyEffect,
+            },
+        },
+        SongDetailAl {
+            d: SongDetail {
+                id: 442898846,
+                name: "Cynthia (Original Mix)",
+                ar: [
+                    SongArtist {
+                        id: 160512,
+                        name: "Taishi",
+                    },
+                ],
+                al: SongAlbum {
+                    pic_url: "https://p4.music.126.net/yMFUL10f-swtzcQaTlnrtg==/18556457743384803.jpg",
+                },
+                no: 2,
+                cd: DiscInfo {
+                    number: Some(
+                        1,
+                    ),
+                    total: Some(
+                        1,
+                    ),
+                    subtitle: Some(
+                        "",
+                    ),
+                    raw: "1",
+                },
+            },
+            privilege: Privilege {
+                pl_level: JyEffect,
+            },
+        },
+        SongDetailAl {
+            d: SongDetail {
+                id: 442898847,
+                name: "Faint Light (Ujico* Remix)",
+                ar: [
+                    SongArtist {
+                        id: 1079081,
+                        name: "Snail's House",
+                    },
+                ],
+                al: SongAlbum {
+                    pic_url: "https://p3.music.126.net/yMFUL10f-swtzcQaTlnrtg==/18556457743384803.jpg",
+                },
+                no: 3,
+                cd: DiscInfo {
+                    number: Some(
+                        1,
+                    ),
+                    total: Some(
+                        1,
+                    ),
+                    subtitle: Some(
+                        "",
+                    ),
+                    raw: "1",
+                },
+            },
+            privilege: Privilege {
+                pl_level: JyEffect,
+            },
+        },
+        SongDetailAl {
+            d: SongDetail {
+                id: 442898848,
+                name: "Cynthia (Hedonist Remix)",
+                ar: [
+                    SongArtist {
+                        id: 0,
+                        name: "Hedonist",
+                    },
+                ],
+                al: SongAlbum {
+                    pic_url: "https://p4.music.126.net/yMFUL10f-swtzcQaTlnrtg==/18556457743384803.jpg",
+                },
+                no: 4,
+                cd: DiscInfo {
+                    number: Some(
+                        1,
+                    ),
+                    total: Some(
+                        1,
+                    ),
+                    subtitle: Some(
+                        "",
+                    ),
+                    raw: "1",
+                },
+            },
+            privilege: Privilege {
+                pl_level: JyEffect,
+            },
+        },
+    ],
+}

@@ -223,6 +223,7 @@ pub fn resolve_discs(songs: &mut [SongDetailAl]) {
     songs[0].d.cd.subtitle = get_disc_subtitle(songs[0].d.cd.raw.clone()).to_owned();
     songs[0].d.cd.number = cur_disc_number;
     songs[0].d.no = cur_track_number;
+    cur_track_number += 1;
     for i in 1..songs.len() {
         if songs[i].d.cd.raw != songs[i - 1].d.cd.raw {
             cur_disc_number += 1;
@@ -476,9 +477,7 @@ impl NCMAPI {
         )
         .ok()?;
         for (i, data) in songs.iter_mut().enumerate() {
-            // data.d = details.songs[i].clone();
-            // only rewrite the cover
-            data.d.al.pic_url = details.songs[i].al.pic_url.clone();
+            data.d = details.songs[i].clone();
             data.privilege = details.privileges[i].clone();
             data.url = Some(
                 urls.data

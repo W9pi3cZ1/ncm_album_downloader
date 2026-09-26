@@ -229,9 +229,8 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
         Some(info.album.company.clone())
     };
     let release_date: Option<String> = if info.album.publish_time > 0 {
-        // 网易云返回的是毫秒时间戳，且发行日期是"中国时间"语义
-        // 直接按 UTC 解析可能早一天（比如北京时间 1 月 1 日 00:00 = UTC 去年 12 月 31 日 16:00）
-        // 这里统一按 UTC+8 处理，得到正确日期
+        // UTC+8:00
+        // Fuck you Timezone
         OffsetDateTime::from_unix_timestamp((info.album.publish_time / 1000) as i64)
             .ok()
             .map(|dt| {
@@ -274,13 +273,15 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
             disc_fmt = String::new()
         }
         track_fmt = format!("{:0w$}", x.d.no, w = (total_track.ilog10() + 1) as usize);
-        let song_path = downloaded.paths.album_path.join(format!(
+        let filename = format!(
             "{}{}_{}.{}",
             disc_fmt,
             track_fmt,
             x.d.name,
             track_tmp_path.extension().unwrap().to_string_lossy()
-        ));
+        );
+        let song_path = downloaded.paths.album_path.join(&filename);
+        eprintln!("WRITING {}", &filename);
         fs::copy(track_tmp_path, &song_path).unwrap();
         let artists: Vec<String> = x.d.ar.iter().map(|a| a.name.clone()).collect();
         if let Err(e) = write_audio_metadata(

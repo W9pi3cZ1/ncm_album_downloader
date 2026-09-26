@@ -387,6 +387,6 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
 
 pub fn cleanup(downloaded: &AlbumDownloaded){
     eprintln!("CLEANUP {}", downloaded.paths.tmp_path.clone().to_string_lossy());
-    fs::remove_dir(downloaded.paths.tmp_path.clone()).unwrap();
+    fs::remove_dir_all(downloaded.paths.tmp_path.clone()).unwrap();
     println!("{}", downloaded.paths.album_path.clone().to_string_lossy());
 }

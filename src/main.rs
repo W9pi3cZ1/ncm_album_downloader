@@ -2,13 +2,16 @@ mod api;
 mod cookie_loader;
 mod util;
 
-use api::{get_album_id, get_album_info};
 use reqwest_cookie_store::CookieStoreMutex;
 
 use clap::Parser;
 use reqwest::Client;
 
-use crate::{api::AudioQuality, cookie_loader::parse_cookie_txt};
+use crate::{
+    api::{AudioQuality, NCMAPI},
+    cookie_loader::parse_cookie_txt,
+    util::make_album,
+};
 pub use api::{NCMEAPI_DOMAIN, NCMEAPI_URL};
 
 /// A netease cloud music album downloader
@@ -25,6 +28,15 @@ struct Args {
     // Audio Quality / 音质
     #[arg(long, short, default_value = "exhigh")]
     quality: AudioQuality,
+
+    #[arg(long, short = 'n', default_value_t = 4)]
+    concurrent: usize,
+
+    #[arg(long, short = 'a', default_value_t = 3)]
+    attempts: usize,
+
+    #[arg(long, short, default_value = "./out")]
+    output: String,
 }
 
 #[tokio::main]
@@ -41,10 +53,7 @@ async fn main() {
             match parse_cookie_txt(&path_to_cookies) {
                 Ok(store) => {
                     eprintln!("COOKIES_LOADER -> Ok(()) ");
-                    eprintln!(
-                        "COOKIES <- {:?}",
-                        store.clone().iter_unexpired().collect::<Vec<_>>()
-                    );
+                    eprintln!("COOKIES <- {{...}}");
                     jar = std::sync::Arc::new(CookieStoreMutex::new(store));
                     client_builder = client_builder.cookie_provider(jar);
                 }
@@ -60,13 +69,16 @@ async fn main() {
 
     let album_url = args.album_url;
     eprintln!("ALBUM_URL <- {}", album_url);
-    let album_id = get_album_id(client.clone(), &album_url).await;
+    let ncmapi = NCMAPI::new(client, args.attempts, args.concurrent);
+    let album_id = ncmapi.get_album_id(&album_url).await;
     match album_id {
         Some(album_id) => eprintln!("ALBUM_ID -> {}", album_id),
         None => eprintln!("ALBUM_ID -> FAIL"),
     }
     let album_id = album_id.unwrap();
     eprintln!("ALBUM_INFO_API <- {}", album_id);
-    let album_info = get_album_info(client.clone(), album_id, args.quality).await.unwrap();
+    let album_info = ncmapi.get_album_info(album_id, args.quality).await.unwrap();
     println!("{:#?}", album_info);
+    let downloaded = ncmapi.download_album(&album_info, args.output).await;
+    make_album(album_info, downloaded);
 }

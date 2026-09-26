@@ -1,7 +1,7 @@
 AlbumInfo {
     album: AlbumDetail {
         name: "Better Together, Vol. 7",
-        pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+        pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
         publish_time: 1784822400000,
         company: "SILKENWOOD",
         artists: [
@@ -39,7 +39,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/hQWnnhmW9oCs4xE0I9cffg==/109951173633287698.jpg",
+                    pic_url: "https://p4.music.126.net/hQWnnhmW9oCs4xE0I9cffg==/109951173633287698.jpg",
                 },
                 no: 1,
                 cd: DiscInfo {
@@ -61,7 +61,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966242,
-                    url: "http://m801.music.126.net/20260926003810/e6a2290ecda3aa411164cd43f3836286/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759280879/4d9e/0797/a77c/d297f0a0dd5d8e4340820e41c894552d.mp3?vuutv=xlWAdJLUfvPTnScrCeR8NooDFbZcE2bDtqVfC9bPvaYHbiZZxIlRURQWGdnzBFuDBST4P2wveNF5f3uf99ElZlNkv/61hw/BoQVZVKaWxL4=",
+                    url: "http://m701.music.126.net/20260926130305/0816eb9164f1c75cb3425dd53f7d7b5c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759280879/4d9e/0797/a77c/d297f0a0dd5d8e4340820e41c894552d.mp3?vuutv=QfMx+QOVuBBbMagDwj/CfxR1U6WTQEWqoIKvJzR+dFkyCmaE9YcjdpJOjSV327bHlIQJQsMFspfnOSiqsXnUqb/+EIUUIssGvt/yoYjACdE=",
                     file_type: "mp3",
                 },
             ),
@@ -81,7 +81,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 1,
                 cd: DiscInfo {
@@ -103,7 +103,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966243,
-                    url: "http://m701.music.126.net/20260926003810/ec86b519d41a03e742558f8e7fe52216/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759277681/7e5a/030f/abb3/54b748115b2f6a8dab68a16dfd24198d.mp3?vuutv=89DMbSXTsVKlwVIgia9kaD5rxx/7VOdmt2wmuxk5YbQQY5rc9tdTHqb5bMIo+gMiaGSInESDuX4MaIFPJwcPyLCvXSL2OMGCjqgpaP34g34=",
+                    url: "http://m701.music.126.net/20260926130305/a04e2abd5ba8f84076e9cfb163fae228/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759277681/7e5a/030f/abb3/54b748115b2f6a8dab68a16dfd24198d.mp3?vuutv=BIjo9foVS3e7TR+8m4PwMpa0svC8mk7AdXxbWkU6IPBN8IWFAzfBUTY4BkmECyZ6BgE7I8K3+uSkPhdqb5rPwRjvQ9nMuYr3g6kM8wh/SJs=",
                     file_type: "mp3",
                 },
             ),
@@ -123,7 +123,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 2,
                 cd: DiscInfo {
@@ -145,7 +145,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966244,
-                    url: "http://m701.music.126.net/20260926003810/6a74d7d452ca8f4c44402e0178ae2037/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276365/c076/6102/3074/5a8550ef280cb159b84b0eb98ee2a713.mp3?vuutv=1lsfUAy4okfjRrTlwzjVX99qqgjDWoJjC5YJkaWRUwpXJaPkIM1EFvMTM4XxVt8co8YQmxThSmhpuDZSqPZEnuJ6P0oJ6O3oz0/NuBUsHOM=",
+                    url: "http://m801.music.126.net/20260926130305/1f475aa9027ad5df79da3feac8d4ea8e/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276365/c076/6102/3074/5a8550ef280cb159b84b0eb98ee2a713.mp3?vuutv=ztinDc/K4rAZ/cNpg6tOhBaDl7V6oFaQubXJVgdP5bICsdoNjxN0cjhAJoJL5XwK5T1yKDyMld55ZMn9dCKer2Ntk8l+25RVyxocl+ftons=",
                     file_type: "mp3",
                 },
             ),
@@ -165,7 +165,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 3,
                 cd: DiscInfo {
@@ -187,7 +187,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967095,
-                    url: "http://m701.music.126.net/20260926003810/a131b4f317357a3d685ce2b61af80b48/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759278994/b1de/ef2e/5816/b3b66ffbaba4136ceffc3af4d5540ac8.mp3?vuutv=Khawh5z17/qo3+5maCr0JrDeOVCTwRWrwRxKu596wmf4M9si5693HsiY9R53uRqDKHXUcw2T7gLfYS2Uoh/E+9YpLRQmeolq+7+BZRPlDO0=",
+                    url: "http://m701.music.126.net/20260926130305/abda66eebded5133e75b7f52bfb701e7/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759278994/b1de/ef2e/5816/b3b66ffbaba4136ceffc3af4d5540ac8.mp3?vuutv=r4CxDdYVz2oFmijGkygQ4Nag/t+fyEKYxiwEZMlX936nuCzKn2i1P8nR/2PBKWjnWgZXb3oPYG0+RkNmlNg39HTRZlf3gQUZEtTwGc+9xy8=",
                     file_type: "mp3",
                 },
             ),
@@ -207,7 +207,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 4,
                 cd: DiscInfo {
@@ -229,7 +229,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967096,
-                    url: "http://m801.music.126.net/20260926003810/cd036c58374ce060acbed7a978053d98/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759283027/47f9/92f4/2694/e74ff3aa9321f23608107ec714e40e98.mp3?vuutv=VEBuPoeQ+TsH4LKGnSlzOojSnmfV8SxJNG3UrR+gaXd8mtJGI9kbknrqfrh0LHWvYUN99Nn+mX4lNAO4VXM6Wfuz/+7qebSnRkvlsHuE1H4=",
+                    url: "http://m801.music.126.net/20260926130305/6cefeadd9e42fde19dcaab3d74fcc4da/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759283027/47f9/92f4/2694/e74ff3aa9321f23608107ec714e40e98.mp3?vuutv=57Dojjqm3VPgnvQ7NcseQWIBBgJ7QHT6BF2Fb4dOTZSijLJaJqBA/YwcK5Rz3GhMyjJUJJ4ofQVAKMdA84+CgQV4vPdEaXHFaegWH0LmSHM=",
                     file_type: "mp3",
                 },
             ),
@@ -271,7 +271,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966245,
-                    url: "http://m801.music.126.net/20260926003810/8ab3a30112035372c38a6615f305c58e/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759275463/c6c7/237f/96b3/f49c98450b841c561b3d9954cdf04fc7.mp3?vuutv=/3cR5rIsmsJS4z+nCMhUe8UezFWiZ9ppxaKOAzVomQIjOTqnWybQGMiBRxBSCLn+POaKr6Lagi7mew5wiN48qrXfmPyUKN36cxSSm/wWknY=",
+                    url: "http://m701.music.126.net/20260926130305/9c11c73d602710e79666ca5595287f4c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759275463/c6c7/237f/96b3/f49c98450b841c561b3d9954cdf04fc7.mp3?vuutv=jZxpu4gGRxYIZJMpip15HXXk7F0AfjE7EG6gKeaGEmxuQrjWj1MWTTAJrTT4AQyK26pe/PoVeX2dyVTPzbOryn9addjCNvE0/lmTd/372Fw=",
                     file_type: "mp3",
                 },
             ),
@@ -291,7 +291,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 6,
                 cd: DiscInfo {
@@ -313,7 +313,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967097,
-                    url: "http://m701.music.126.net/20260926003810/0c438d0f02951b0e4f7266c1c92b1ed0/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759279917/7295/93de/a0fe/1a07f4fe40a9b099a53484a371cf5a98.mp3?vuutv=TkzH/NPv5LRTU6o971fOhK3UtiixiV0QIwiAHcy6StbxLLqGLt63NFq22XxLJZTip7ruKuk+YMwVAv5PwTvXJXNPWJZqL9CUY6nZffh9UWQ=",
+                    url: "http://m801.music.126.net/20260926130305/cc8c25d79558c3af14c6cf0d89ab8746/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759279917/7295/93de/a0fe/1a07f4fe40a9b099a53484a371cf5a98.mp3?vuutv=eAnGTYxPHmlNuRvfDR6NNlPN1Lk+u2HV0i659lfy5Tc684LkAainLsB8gUQQuizVfLWIvz8/i9YnCrBiHTTs1pLm5EMNUu6vnnZ9CH6DSuI=",
                     file_type: "mp3",
                 },
             ),
@@ -355,7 +355,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966246,
-                    url: "http://m701.music.126.net/20260926003810/b875ee16489e441176b455f36f161905/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759275602/48b3/4abd/20e8/4e62df2f33e186f85b1e4342efcc1d74.mp3?vuutv=i6eWHHzxLII9RS0f1sdLop97ZnWzPDVjyy3SOM9ILIy6q8PE/mUxKcIykzuy1JEG8mofule8WE7+3uu8nR1XTGrkqrOdie5nKnWeU6BBloI=",
+                    url: "http://m701.music.126.net/20260926130305/ce0becfe282b38403269a8380f5b1345/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759275602/48b3/4abd/20e8/4e62df2f33e186f85b1e4342efcc1d74.mp3?vuutv=8+pMTHZsspjZEOgq7/iBYldFMFb0kwtCR3zNDDk/qJZPF4SdBPXfX9FqL37lnzUkXzLSwW451PyGwbr8iy5z9KZl8l9g/aIlGUYetSqwSL8=",
                     file_type: "mp3",
                 },
             ),
@@ -397,7 +397,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967098,
-                    url: "http://m701.music.126.net/20260926003810/4eb98c4c78384912e48259a8664969db/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759286060/ca82/7eff/6032/8b034c68ab6b18ce87a5216870dcc0db.mp3?vuutv=zyL9xa+lbHnFUU3aJhsDZnZibrAL/G67z6Y1Szr80KowkefJ1a/t7UBdY4TFS4liwq/h09MO/WKFnqKT+m3OADXIqChsITJnJLj+d/rveM4=",
+                    url: "http://m801.music.126.net/20260926130305/17f242d5cf00196ebafdcb27476f0ba1/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759286060/ca82/7eff/6032/8b034c68ab6b18ce87a5216870dcc0db.mp3?vuutv=v2Bs8hTEcqzfJhIfw3q30dtwlSZb5URbQI+HdAleiN03/O+fNQCpvfkhhhzlQH6pfLeBedVEeDfCQ6xfTEfTsCalmkor8dkeM3kLTyUQGrM=",
                     file_type: "mp3",
                 },
             ),
@@ -417,7 +417,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 9,
                 cd: DiscInfo {
@@ -439,7 +439,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966247,
-                    url: "http://m801.music.126.net/20260926003810/0659d2c96a3824ee24971452ff46b40f/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759281661/a777/7cb9/e57a/c2def4a9e28a9847d259d818643171bf.mp3?vuutv=HgozOCx6kHdvh00zeOLKkppNFXBHg2HK8bDhh1xV+dr4W7Ibp86WeRRGcFh8hbj42uSWx5Swf0iwy6MNu8QH26lBmlMr9TbE2EZnVbEsADc=",
+                    url: "http://m701.music.126.net/20260926130305/4c049f3946a447a317d393ce42c869bb/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759281661/a777/7cb9/e57a/c2def4a9e28a9847d259d818643171bf.mp3?vuutv=oxTYcjYcS9C4KhEn662aJjQMvLu1MEkfnFBf+OKKtE5QBtR0wkU8UeYZ8xQex32dk6dKFGY9agQVMZt+X8N1xO9RPNYHTPjL+V7WX9cM/B0=",
                     file_type: "mp3",
                 },
             ),
@@ -481,7 +481,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966248,
-                    url: "http://m801.music.126.net/20260926003810/0507627dc31599f42a66a70e76954ce0/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284477/6ab2/36fe/fdaf/0b758235c4fd07c679590b83dae56c5c.mp3?vuutv=yrvYNl68xmck2Zfy7SyqPJweVi43dW3/L7IEr3k1BfHOKplDdxu8k5HuNGsyHyawvSqPMKAjCxE7ZpbRd6l9oUXSMeelaLux4/9AGnEijjo=",
+                    url: "http://m801.music.126.net/20260926130305/59d33e871b3ecf531479fae3175f96b6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284477/6ab2/36fe/fdaf/0b758235c4fd07c679590b83dae56c5c.mp3?vuutv=sOJDzbViTKwkrqjk3G0cxvLZp1UiZv4D8DJnlJCX1sWnw7Qi7Ka5EjFPqvh+z0YnuTvABn0FzUwYgqgsGgkmJxfaeACY0O4TrHhoGNn6NvI=",
                     file_type: "mp3",
                 },
             ),
@@ -523,7 +523,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967099,
-                    url: "http://m701.music.126.net/20260926003810/faf30ff62c118efb17b4c9c5f8740b30/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759285373/1215/1d65/e825/5805e020e1e7f3ca40c66b7da7bdc355.mp3?vuutv=Q5XB7CDKTO16bbjrQO++wzuXpHfa4KOeXWYE3LKQ7b2Xgw2XHIA71Cs7yZBmbmqm2dcBStq5+vluJaxJXLnDQDmJ3VPE8icewG3fwmCeUio=",
+                    url: "http://m701.music.126.net/20260926130305/5ad88e6b658c0645373976946167f104/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759285373/1215/1d65/e825/5805e020e1e7f3ca40c66b7da7bdc355.mp3?vuutv=JfLcOII22a8wqXG8+iKH4K3D0hQByeJkYH1Xr22NbGeWk7O07a24y/LUODoD7cwPm/olPfzTVqTumoZtd1T+AQGwJED5nELXttQnoAWoVIk=",
                     file_type: "mp3",
                 },
             ),
@@ -543,7 +543,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 12,
                 cd: DiscInfo {
@@ -565,7 +565,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966249,
-                    url: "http://m701.music.126.net/20260926003810/9585101ca6b5bc068366cd81027f1138/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759293151/ecf9/cc06/39e4/cc10fd71ad5eda35fb42ddeb95bd3b49.mp3?vuutv=iqDNSD58fMmC3Jlg4uO0RPCbuRmDPmfc0dKTakbX5dosBh0AxaO/ZuWENTObjF0E5pIw24vpn6IDeGO33+5QLEe7BuRH/BvWmow8dioXNGY=",
+                    url: "http://m701.music.126.net/20260926130305/95868f085ceed3b0413b5bd838cfa3fe/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759293151/ecf9/cc06/39e4/cc10fd71ad5eda35fb42ddeb95bd3b49.mp3?vuutv=+4OoCu9HXp5AE/ZlmtsJzQp22+VeNecojJM/PZsPn1bXd4crvoNou4HQAy4ZkUR40RMwC29WWqFrd6pqh7nEGKPEx8i4WhO6ILbyi/N0DH8=",
                     file_type: "mp3",
                 },
             ),
@@ -607,7 +607,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967100,
-                    url: "http://m701.music.126.net/20260926003810/1166138e807a5c1fe67a0b5be01038ac/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284222/5266/1740/76f5/3c73cae8a1dfb3e5dfc80b35452cf67a.mp3?vuutv=fHcMx5XtuhqymTOlgcqBYaCE/txHq/hjL+QAXfdWr4wobrznfsrqwmOhOmeervv8iL/oq18ydnEc60FJvCPPVWZbbjZ5xRM8aKkbxljfOQY=",
+                    url: "http://m801.music.126.net/20260926130305/db61094d46616139621ed12008a39e5f/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284222/5266/1740/76f5/3c73cae8a1dfb3e5dfc80b35452cf67a.mp3?vuutv=/carLYqGLnO/k2M3B6lDX9qUsMaDGlxqQWvaRdAkHM74xdyWUEf0Z1sjs8WQUS/lrnXWnxaVrRy8mOa5BDhngFPpgzW3qWGxZPViGO76IcM=",
                     file_type: "mp3",
                 },
             ),
@@ -627,7 +627,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 14,
                 cd: DiscInfo {
@@ -649,7 +649,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966250,
-                    url: "http://m801.music.126.net/20260926003810/c71de5ccbf7c58daeb65988227efa126/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284932/d7e1/abe7/994a/b76da8aa1e836dcdfa50a9589bd63bee.mp3?vuutv=gWeODNseHCVyHOCXpIKwLrLXhe96wBO3OpmtFSK0sXxmPMNDrDdHdM4B+ANR42yXbMGRhICnXjTwevpeztOjbNNjZy0rEREJv02X6dp0lMI=",
+                    url: "http://m801.music.126.net/20260926130305/e005ab159bf59fbbf65b71895d0a9529/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284932/d7e1/abe7/994a/b76da8aa1e836dcdfa50a9589bd63bee.mp3?vuutv=Z/vJE3W55WWzvUtDbye2lsx83kFfSQ3IInLnf0nhwRGLzjTTIKdK+fz6xU6kovbv5g0eZ+TYINMaeiMKlv36+7dn4K08vLhAvUXDfQlMKTs=",
                     file_type: "mp3",
                 },
             ),
@@ -691,7 +691,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966251,
-                    url: "http://m801.music.126.net/20260926003810/4a064e858e757a1aaca498e6eb20c862/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282935/7bef/1b22/cf8b/52261c643cbebca1b022195fdc90a053.mp3?vuutv=kDEpJS6ZGovoPIMSYZXsyKKBrBS8AOta5V9Ag7btc/Z7gXQR6tCfV9mdcoMKDH22HbyOHqQEzzH7xhUfy9AvXJ4YgTWsCKVEbX9QL1ZA/Zg=",
+                    url: "http://m701.music.126.net/20260926130305/c1dc29a7174b776573f84c3971e47e73/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282935/7bef/1b22/cf8b/52261c643cbebca1b022195fdc90a053.mp3?vuutv=NHZEiecWpZ2IUwzk5hEm0I4AjEkcuJ1oqFIkWEgzJnkjR3iAzsKn5rhikrSH39JzUA2LkwijtbFfdMzmBQrZQGiUNzbh7uZqEIIAk7VMM+c=",
                     file_type: "mp3",
                 },
             ),
@@ -711,7 +711,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 16,
                 cd: DiscInfo {
@@ -733,7 +733,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966252,
-                    url: "http://m801.music.126.net/20260926003810/419f98fd709688a3a54658d82fd25c87/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759277700/08a7/99bb/c7e6/5dda8a6d53d968d406b1ea8aae5af0db.mp3?vuutv=MkV+aaNwSamP0pxBZ23r2+kI0n4xhSiJMDMAKIEbUpu831GHV0ZHzj6tjRcRfUh0ixqkNFNMNdTR+I1IhJJjsmgIYKPwJsUv8BxcKbmnhSA=",
+                    url: "http://m801.music.126.net/20260926130305/4650fb6d5b38e64ccdafa3ee4d3a06d7/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759277700/08a7/99bb/c7e6/5dda8a6d53d968d406b1ea8aae5af0db.mp3?vuutv=2GyLBToGZcrwEKvGOdWp2WikGP2bMPUkoVTezG2TAo9NtxdZLYDUJHDH729t6Yhf9mSlKgBglQ+RkZbl6TVVtQSCPeAtR8sc/yzkPglMPjo=",
                     file_type: "mp3",
                 },
             ),
@@ -775,7 +775,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967101,
-                    url: "http://m801.music.126.net/20260926003810/1ae789f9d4281ce2ad6c4db4ea066abf/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276969/18da/8246/a5d5/f61c53e54990b7fc0009056ac4d60e99.mp3?vuutv=xa7vwQA9IHcn2G7p4Jsfgu7aQb5qQuJ9xjdRzoL4u4PMeeDzqbBKGYA3whJCsy4iTl+mHZccEE994C14BTWFTuevoz6CyHW0PEY/P5KQM0Y=",
+                    url: "http://m801.music.126.net/20260926130305/8a2b0b47a58886ef7f4e6c68f569016e/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276969/18da/8246/a5d5/f61c53e54990b7fc0009056ac4d60e99.mp3?vuutv=XpcLjDeD2hJys4Ud7ihZQVDJc5+RtvF0pIVFF2m9pl9hWXNxQaMQK5eDdMAQtX9MgKeB+D2ieE5VNvmWfkAZRSc4/9C5IqBF7Y2bYtnwKPg=",
                     file_type: "mp3",
                 },
             ),
@@ -817,7 +817,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967102,
-                    url: "http://m701.music.126.net/20260926003810/2f016226dd42b6760e67c59771d465cb/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759286321/fb0f/ebea/69b2/d257d38ddf55c7ccb2a3177b32a9e2d8.mp3?vuutv=2o0mnz1mJB098NyfYDT0I+Z9VUddQkOd4tLk4Aw1svVhCG0amWl7eis18pLDUSHg33I+0x7jbGleJwHtwuuS9gb13gYIxBQwj3mGIkxGxhE=",
+                    url: "http://m801.music.126.net/20260926130305/87bf8df328a680576133ad2874cc2966/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759286321/fb0f/ebea/69b2/d257d38ddf55c7ccb2a3177b32a9e2d8.mp3?vuutv=RZekLuxLDLK70wjI7ngfwi8k4lXzco99AzhcNmau6+0q97pdxvalCGMRqKkhGonEOVpUwDByAVCtvQJaWeexEriXOSPgtOXNcEzDFDot4EM=",
                     file_type: "mp3",
                 },
             ),
@@ -859,7 +859,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966253,
-                    url: "http://m801.music.126.net/20260926003810/35d7d41c65f683ef832f2b6fe395c2dd/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759275482/49e5/b454/5042/15e6b227395d413e9da6495012f77a1e.mp3?vuutv=VJpV68FQM0WLah1h/stQKX6aT8vSUQyWR3sMTrj4gAW8ztEWF1LXUP0Jz+NpkR0eQjUhQ+is0SmxcBVxMGlN1AVUZTglGo6VnLADK71JjTk=",
+                    url: "http://m701.music.126.net/20260926130305/0f52a313acc3a5cd2023d359ab869049/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759275482/49e5/b454/5042/15e6b227395d413e9da6495012f77a1e.mp3?vuutv=qOdTF84bTXFWwHwi589UeZoVA9voSrScdX+VWVy/UUuk4ygASACKHtFNaF1Ps/zyqBoUmE3Qp2hVfgmUNfyr6D5ula0CC7H/RZKZDhwdu+s=",
                     file_type: "mp3",
                 },
             ),
@@ -901,7 +901,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966254,
-                    url: "http://m801.music.126.net/20260926003810/254ed9439422daa33eb3e4d687f57ea9/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276339/177a/0234/36ae/0f1e6ca44d7e3b8f4178bb9c347dd921.mp3?vuutv=JMo2vl47MZwpEeONhhAJHxGS+m8tkw3pILU9RkZe6sTGgCn1nA9I7mWJTsUpG7dNRl9Ywa4WIn6eqhvkXh//gZBcTe1o1hWqbCe7QBA0/hw=",
+                    url: "http://m701.music.126.net/20260926130305/467c2b57e5735ab69fac3945b4c25399/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276339/177a/0234/36ae/0f1e6ca44d7e3b8f4178bb9c347dd921.mp3?vuutv=aSTtmiSpW+QECw6hE6zIGin9IxI2tXTYl/EzYjX7JR/bk9eyDGhipPSEPUL7CxVRqHTK7FsqT47juQUrUk5yb7sixZxY56K4O+jyJbzlq6k=",
                     file_type: "mp3",
                 },
             ),
@@ -943,7 +943,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966255,
-                    url: "http://m801.music.126.net/20260926003810/505195f74744089d25c11e9f4979fb23/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759283638/26a4/d872/bae6/14c14836aac0f8d9b1db6e301e87ac2b.mp3?vuutv=z4Dmfnthu/uMRFLntQOo/CV2w4RF4zvn9gi+sX9ZpdsMLJvnBPJVMTzK6dDSeIufUiSBOvE2fM4WoYjq6gTHAUIoU8cs4vxKuYGzFWRsKIo=",
+                    url: "http://m701.music.126.net/20260926130305/15efb49bd7147e721b5fe4a7d1257ac3/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759283638/26a4/d872/bae6/14c14836aac0f8d9b1db6e301e87ac2b.mp3?vuutv=Xy5sKy8q0iBrdKhkDR3jv2NTmVR80IaZTtm63Or+ZHt/VJE7tq2M1B/e0XSEJwHmWAGzZDy26rI9eEdFg6F/HPXgAUFeTXyNYVLPqDvjcK0=",
                     file_type: "mp3",
                 },
             ),
@@ -963,7 +963,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 22,
                 cd: DiscInfo {
@@ -985,7 +985,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966256,
-                    url: "http://m701.music.126.net/20260926003810/b0ee072407ab9b655db18ad774d598d6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759280638/f712/90a4/2304/34ab0bcb4501c62977b86d74cb188e68.mp3?vuutv=HyrmKBdJcc3xq44q5mHA8eQvMVL5xyValyvm+oUz3P7EaQufOGrVEzoBsFckVHoVrWVdjdBN36zxs3JaItaGTMI3RaIdamLHuujhzMNTzfM=",
+                    url: "http://m801.music.126.net/20260926130305/c6cbc42fcf94c3bfd502ce178c7b0831/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759280638/f712/90a4/2304/34ab0bcb4501c62977b86d74cb188e68.mp3?vuutv=1dEKbcpwuK+Hk6z6wSjrAqTNjRr5f0q4GIGzwXJuX7U6k8yx7nPIqT4wNQc5u+SO2qSnQGSo9iuMqAk7+x5ExUcuv3AaZ7KYTjS/QQFzARI=",
                     file_type: "mp3",
                 },
             ),
@@ -1027,7 +1027,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967103,
-                    url: "http://m801.music.126.net/20260926003810/200691d7c2785949c2739b8792e573e6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284799/4d35/0815/83e6/2cd36426c5072dfed24f752edbbb5690.mp3?vuutv=/CDIfhoRUiZEd9OOrP5iRCeZh+eLcJbt4ScwiH2OFLKnqjtjG6p2JW5imP3xggzFzhgj6NbTI0rGl4K9IOTC3TGg+PeLYjmd6ynXWy/bvWs=",
+                    url: "http://m701.music.126.net/20260926130305/86fb30d1a59949ecfb4b2c9b8a21d218/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284799/4d35/0815/83e6/2cd36426c5072dfed24f752edbbb5690.mp3?vuutv=oCrY+QaloBqmZHIV3j282sVtHpUlkxDkwkdy8t1aeSpdjUAq3rQEj/zLepLBTEx8IuPeKpZDA7tuivWKWVc00u1BXHor4Y7uhuH9dgd+JbU=",
                     file_type: "mp3",
                 },
             ),
@@ -1047,7 +1047,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 24,
                 cd: DiscInfo {
@@ -1069,7 +1069,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967104,
-                    url: "http://m701.music.126.net/20260926003810/4258a9c8c55981ce3d8c7eebc682af63/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759287809/c053/ce19/76e8/99a31e0e52068d007293ea47e1d7fd65.mp3?vuutv=LwxKQ+BqDnSwTuh8SM1WTFD7rEHSSdXCbQUbtA0B/09z85RWKxzMxDEEYbYUrftj/Ww/dNfSL5bUTG7T3It8DNLfc/EPG+Fk2a51W4clp80=",
+                    url: "http://m801.music.126.net/20260926130305/2d485c2797d588d7b6d40df388a4e6f6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759287809/c053/ce19/76e8/99a31e0e52068d007293ea47e1d7fd65.mp3?vuutv=gtjwlsxzMtRJSkG9pSdOXysYBWyN5CnjN5z+pSuUyaC67uWS+nHIut7lQVfAMXbuCOuMEf2oY8Xy8QqLwwOVLJx9EhFKlSXhDvFPwTrMxSs=",
                     file_type: "mp3",
                 },
             ),
@@ -1089,7 +1089,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 25,
                 cd: DiscInfo {
@@ -1111,7 +1111,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966257,
-                    url: "http://m801.music.126.net/20260926003810/43655c5b701ee8a13171e7ad3c7d4fa3/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759283477/629e/ddea/e5c2/38d6923bf37ce0bec765599cf85d32d9.mp3?vuutv=m4ACLSH5wM9WCjAdKSP6+hbP7IimiOwhAeodzYlzGUzaFHMc49oxWazJ35aoUASG9CXak82fwZCfGrNOPINCYdrJ9lOnLAoI6DqIWt8Xz5g=",
+                    url: "http://m701.music.126.net/20260926130305/89740badebabe61f40e423a83df53903/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759283477/629e/ddea/e5c2/38d6923bf37ce0bec765599cf85d32d9.mp3?vuutv=HITvljccYfljle2pvXu5lKrzTK/2PVoboZFSMHEDMEH3D+iEt58o/2KIlMxpe3I0xvDedim/PbPNBwApeoAzWbjYMRROVa9iuKrWWytbON0=",
                     file_type: "mp3",
                 },
             ),
@@ -1131,7 +1131,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 26,
                 cd: DiscInfo {
@@ -1153,7 +1153,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967105,
-                    url: "http://m701.music.126.net/20260926003810/d5be33516dca01765c74a09d0fc33b54/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759288352/5dfe/dd9c/fc0a/d6344f8f8635f75a40cb144ea255e604.mp3?vuutv=ZGpXOAGNZBsgRFQb/3trYoz6PJzkQsbpVT0PU6fo9dQHo84CIseSpvhBtA/igmxH6i5FoPV3kzzG5OoabwxVZXu9639lDSAT/kCpSPnpy38=",
+                    url: "http://m801.music.126.net/20260926130305/980da717245d5ef717eb51012a92f45e/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759288352/5dfe/dd9c/fc0a/d6344f8f8635f75a40cb144ea255e604.mp3?vuutv=LIwhmq703n6OuXb5hqaM9txL6IOTa/1Lg9apvjh8Polp9y+T9ip2EJkHkBDbVBS3SeiAuBwcy5HwzAVXFaPHDrEucz7hm0DObmXXXVq/zwI=",
                     file_type: "mp3",
                 },
             ),
@@ -1195,7 +1195,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966258,
-                    url: "http://m701.music.126.net/20260926003810/f1088476394393f633b561270b5938c3/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759295246/924b/2f15/42d8/a16ad2a437f7217bc9510b3eb1712876.mp3?vuutv=O7eQuhLqvenVsoH7Q56KE+XldwMSozfHhNJO+dZXkXGB41ZGxJTGivysNq665YpstXw5K0z+MA10OgbH3TLV9IoE2mw9JfSiHBdns7Rw17w=",
+                    url: "http://m801.music.126.net/20260926130305/e8646038bb049f12be93608f6193a5d1/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759295246/924b/2f15/42d8/a16ad2a437f7217bc9510b3eb1712876.mp3?vuutv=TF/M03i1hBmMvK5KZjdgevZsv0JOwPw9qSCde+2iH2GgrJP9QDOjONMeYszTFfCQiPRj1FUrYBROr0XgvnI73e5dXWKQuQTY+Z9+wGmJI5c=",
                     file_type: "mp3",
                 },
             ),
@@ -1215,7 +1215,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 28,
                 cd: DiscInfo {
@@ -1237,7 +1237,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967106,
-                    url: "http://m701.music.126.net/20260926003810/e4d1082fa6ebac0b0c62e8e854862826/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284346/9e9b/cf1f/702c/4c89dbb586a5f070a997aba1276ed49d.mp3?vuutv=Vx+YCQEfZdo2Spx0qHT6yJLWWVlg4Ms6Gv6cpV3T3FQdL3jb+4F0jTTnhH91Kc2aqfC7V1AichIxcbj4WlIBa3Ji2Qun2heBFASjkqxzLb4=",
+                    url: "http://m701.music.126.net/20260926130305/33e68cbfe74e066b1cbcb28d3daec1da/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759284346/9e9b/cf1f/702c/4c89dbb586a5f070a997aba1276ed49d.mp3?vuutv=B0wBp3p6GU/paishml74x3qkEzLVgj8a9iI7nFv107Tt8PYwTHmSmmsR4JyLC31RylfkseeJ8Gr24JT9qqI0/yvYKFaE1QA2iNktR40xS/k=",
                     file_type: "mp3",
                 },
             ),
@@ -1279,7 +1279,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966259,
-                    url: "http://m801.music.126.net/20260926003810/67898ac716221abe71502b1c5547a75d/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759287703/14f6/f1b6/3947/8e3957eb2aa377aeba13bde48b4799d3.mp3?vuutv=6U0ArsWkUDFm1d85tQNw+T83Xq7jfCkekB1a0RKZa5djh713iev+H838vwsGu1M8xXSlfdHcQE2xiYd1YEAXo+EDlBGfMa/kyR5ApZmDmyE=",
+                    url: "http://m801.music.126.net/20260926130305/8989abbfe6e72ee60962a684ccbb54b6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759287703/14f6/f1b6/3947/8e3957eb2aa377aeba13bde48b4799d3.mp3?vuutv=qv8rk6L9yGviSYxgtBT8oN5OEzeKBUvNlDZ90qxkfxrxHwZw5tT8Fi1wewO4PqGccZzmj71JgA9s/zRNh0VcDxqd3RnRpnQeHvaXJDhqIv0=",
                     file_type: "mp3",
                 },
             ),
@@ -1321,7 +1321,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967107,
-                    url: "http://m801.music.126.net/20260926003810/32e6925c715b6d2b9ddcf50f13599912/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759289394/0634/b168/c747/f0107bde058fca92f5bd99fc74d0959b.mp3?vuutv=CkA6g3YoJILsJIUaNci+kpK3DTPPfsLmMun4wIJLvFrpkEsePkcaY6YRvNymzsRSdxxpRpVBakMRyCUoCJkfSJsk0mMQJb1Xsp1jdgJjBJ0=",
+                    url: "http://m801.music.126.net/20260926130305/4fed1a5f4fbd101a4991ab3c4d3095b5/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759289394/0634/b168/c747/f0107bde058fca92f5bd99fc74d0959b.mp3?vuutv=DDMYZOo8r5zstaQxI1NHGPIOJpyu2f5CGjYubk4JslPepWzVgxVnmyx0tI5rhAFOx7TSPtD8qqRDNabW90+0LJN/2lNdhOpAeftarXH5CK0=",
                     file_type: "mp3",
                 },
             ),
@@ -1345,7 +1345,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 31,
                 cd: DiscInfo {
@@ -1367,7 +1367,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966260,
-                    url: "http://m801.music.126.net/20260926003810/4db2e93fd0fc40f39dcf7127097e3e18/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759290029/7780/deff/2b4d/1ccf1b4e49ecc87f5981788a01d07cd4.mp3?vuutv=KlvFrln3903xjnUA1eH1/CVsZrlKyhU7qvntmzyhtH9Xo/Z8TKq4A82mfOu/1nMUWzP0AK/ktDTouFmCQ0WAHgADh7TiWWufHLNd3YnKjoE=",
+                    url: "http://m801.music.126.net/20260926130305/655879f5dd72c819cc05c3e26d5da384/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759290029/7780/deff/2b4d/1ccf1b4e49ecc87f5981788a01d07cd4.mp3?vuutv=GGrnMx9ns3QZQnK7broAoj5SwXskw9Ur3z+XBQP6v65qI7Ktl75IkKLmI5fevqLSmmICt0ZSf8xLBAtG4iaHf2G6cJqEiGhXot9nwjNsYsk=",
                     file_type: "mp3",
                 },
             ),
@@ -1387,7 +1387,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 32,
                 cd: DiscInfo {
@@ -1409,7 +1409,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967108,
-                    url: "http://m801.music.126.net/20260926003810/770781ecbf5d960b806d57792445cefa/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759304791/cc6a/8df4/ff20/5e0fa115d0b3956dfebabe93233ea61c.mp3?vuutv=ymNuIC97F+3EdHw57KQ9PIf5K8Nc+mkFvTboTOfftJCJp+IVlV5BZZoOY3FodETu315JVJ/iON2AUTAtVEye+39rej84yfgkX0c6WetYF/I=",
+                    url: "http://m801.music.126.net/20260926130305/e17dcfbdbe685177940efaca4ad5d34a/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759304791/cc6a/8df4/ff20/5e0fa115d0b3956dfebabe93233ea61c.mp3?vuutv=WXL+L77dxiyvap6ko0v5tPUfpdtyxN942pjHLmIOO66ARF1qlBEFKUNvfs8f+31qz+kK1W3r+wfDz9z1PZ466SUBB2w3BFto1pediv3DmmY=",
                     file_type: "mp3",
                 },
             ),
@@ -1433,7 +1433,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 33,
                 cd: DiscInfo {
@@ -1455,7 +1455,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967109,
-                    url: "http://m701.music.126.net/20260926003810/2f2b44e7a0acda9d2de2e00138502244/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759297266/1699/4e5c/869b/1c2735e5e35593e7cdc305f3599e1cc3.mp3?vuutv=s2oWLrAaqB1iZnACEHjhH2eeb3/IltsmLgsk544l6KEf6m30/wf/skqvo7JRGsWuri1p0bQ+0RMJTBHSuv3QkN1+wn9YpcH//9V+5N7JRWg=",
+                    url: "http://m801.music.126.net/20260926130305/8fdcc4d1979000942fd99c96f0d81625/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759297266/1699/4e5c/869b/1c2735e5e35593e7cdc305f3599e1cc3.mp3?vuutv=q+LZzK1ptljW76QybXZtnMklwNXlVbgiSkkdA56AV6Q0m+aL6kbBJ7k4dXeDfBFE6j+hff8XRT8wAGmnhZP4/zkCHEJU4WJi9nt/u0FsFQA=",
                     file_type: "mp3",
                 },
             ),
@@ -1475,7 +1475,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 34,
                 cd: DiscInfo {
@@ -1497,7 +1497,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966261,
-                    url: "http://m801.music.126.net/20260926003810/49af1ed65103f03d30d5a182d4d8389c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282096/6c2e/7c73/6474/99ad286fabccdc3c5a6f6f621fd8d83e.mp3?vuutv=IJzwwpr8QgDGm25VCMGs6Cm1VLtkviSvC/a760du1h4rJJd9zVyJweW39hGUJpxtZ7zzCjJ9rc6nHBMSJFNronGtvCzh7dBflKPB7g9+9LQ=",
+                    url: "http://m701.music.126.net/20260926130305/3c9cabdb3f74225824bd09499517982a/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282096/6c2e/7c73/6474/99ad286fabccdc3c5a6f6f621fd8d83e.mp3?vuutv=1ehQYoakLkd8V8uqitH+NkggdlGCZVOajMJ/7FW3PH/pvFHhWtz/6azaUkIke5rW96/3CLguZy1xfkX/zaah+8gP2cJN0qaxb4R6F6esuus=",
                     file_type: "mp3",
                 },
             ),
@@ -1517,7 +1517,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 35,
                 cd: DiscInfo {
@@ -1539,7 +1539,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966262,
-                    url: "http://m701.music.126.net/20260926003810/610805fb1a3b839ef601932a5024221f/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759279240/5acc/c2b0/27d1/2204bcb171ea4c06d57c03368c6c5fbc.mp3?vuutv=m6QqDDqaLgbbuzUwGEBtUkdwpzDl8sJ8xaSmgS0k1eDW8fFFjExPSNm+ZGWh43oLpzHFcPZZQvFg+lHMfSd4cjal/NkojB8Juzj3jIS6E58=",
+                    url: "http://m801.music.126.net/20260926130305/bdeef881b347081ba78d0785e4c30179/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759279240/5acc/c2b0/27d1/2204bcb171ea4c06d57c03368c6c5fbc.mp3?vuutv=tk6JGeRyVhom68FLc9jc8CGMEd4Su6r50WgfJ2aNcQqdgTI4snjXgm6qzQ1XuttoDKnwmVQsJCkj9y9MVLrvZF+mfw9BUbfPISVkU1Ud2Nc=",
                     file_type: "mp3",
                 },
             ),
@@ -1559,7 +1559,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 36,
                 cd: DiscInfo {
@@ -1581,7 +1581,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966263,
-                    url: "http://m701.music.126.net/20260926003810/e7a4e9c39fb37bdacb31e6a8b63d5c7c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276571/9201/7370/6451/450e26f7b05a99e1a24f261b68c04543.mp3?vuutv=2rwWmQ1AuD0qAgiMAYLVsRk9VP6n5CHfw3JKW/OtsDo8H+sa+AtgFWNuP4Re9/4S3syxBO791VU4PFrGJz153A9Iv1KfUeyEI2yk2/0WIhw=",
+                    url: "http://m801.music.126.net/20260926130305/2a8c44898f1d17d756edbca7385284d3/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759276571/9201/7370/6451/450e26f7b05a99e1a24f261b68c04543.mp3?vuutv=6uApNzj0bYG+Q79nJV2O9e33EYjwKQRvAoLhmRReDo5xCPcpq3E8KgWOkAVj+7WWamxyaSFJoKuDChnqggvVj4jxYaI+Z73smk9WqfyvIa8=",
                     file_type: "mp3",
                 },
             ),
@@ -1601,7 +1601,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 37,
                 cd: DiscInfo {
@@ -1623,7 +1623,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966264,
-                    url: "http://m801.music.126.net/20260926003810/52d5dbc1bb75848a88c9df6d28489c78/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759278295/034f/d562/e78f/b58ffe42713f5e4d6af42575176620b7.mp3?vuutv=fdt6FshDOzHzryvaPiJRrlffl4eNbcRyr8Z75YnNpPeOZkG9UWAH560xpfxiSOlBfquBSKH1mqgPczV1UJpOliuz82tEZMUJG+lG3F6MPhY=",
+                    url: "http://m801.music.126.net/20260926130305/e96985180b202334989ea942dc8b3983/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759278295/034f/d562/e78f/b58ffe42713f5e4d6af42575176620b7.mp3?vuutv=Q0JHvstTwdh4OUHHzDQPkfwyiCJpbYqUs2AuR6TADC0bXdx6ZLsUAIKdU2X94Q6Yhc7VInsHUCIEi3aR04Bab+TL8EHXe0UGonD01T8IQMA=",
                     file_type: "mp3",
                 },
             ),
@@ -1665,7 +1665,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410967110,
-                    url: "http://m801.music.126.net/20260926003810/cc7f2f1daa9e581bfc9588f5cd6fa885/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759293992/2e85/74aa/19dd/6fd4d4f9c74c5c6816d0af7aff3862bf.mp3?vuutv=okdBmJ7MD58wkGWeZaGszU4XF/osS5SBHFNPuiR6aMelEdz/YlbTbz/UKAkk/G8wq2FLH7HX5EYuPWra+OTo4R23eBt1NJOVEnroAxLxug8=",
+                    url: "http://m701.music.126.net/20260926130305/987b796a3fe3f70f0d1c5c3d7bd71ff6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759293992/2e85/74aa/19dd/6fd4d4f9c74c5c6816d0af7aff3862bf.mp3?vuutv=E6aUgal30VM4QFcoZu0QpQVYCUcJcgunN4ovqGk5vvtzYMskiJD7fCfhOh4UiWx4Cyk92dI0XjQfxTGlxxBX9CM2ceyYKuZN1oaxQckw6mI=",
                     file_type: "mp3",
                 },
             ),
@@ -1707,7 +1707,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966265,
-                    url: "http://m801.music.126.net/20260926003810/cafff2173bfb5bf70077d35fe4240160/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282686/a566/781d/bdeb/fc6b606ace83a30e31399d9239a24858.mp3?vuutv=e2nxT02L7r5n9l5F7s+MEa1jf+fkbp5FxjZvpUJ29nygITjVctX7vSDQLw2JdYA7P7hQD4FsNGh8pnRdox3O5RlQ3MUD4i3mP4VC7gO1jKA=",
+                    url: "http://m801.music.126.net/20260926130305/b61b7303c4d44343d85298fe85faa75f/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282686/a566/781d/bdeb/fc6b606ace83a30e31399d9239a24858.mp3?vuutv=2vPPV5N/MbuGdHbfVnddTB2Vi2S/kDk4uaYNMS6xjRBa4l1O5ejv3D2a2k+OhThI6s5m25aQ7fd9uR36ibVAF+8FSLDIrRfr9z4lylhxx9w=",
                     file_type: "mp3",
                 },
             ),
@@ -1727,7 +1727,7 @@ AlbumInfo {
                     },
                 ],
                 al: SongAlbum {
-                    pic_url: "https://p3.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
+                    pic_url: "https://p4.music.126.net/FZQXQ_R_n6eiVFRXo1-8mw==/109951173631839378.jpg",
                 },
                 no: 40,
                 cd: DiscInfo {
@@ -1749,7 +1749,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966266,
-                    url: "http://m701.music.126.net/20260926003810/7cafd0eeea5f9601a18914b9a605e3a6/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282867/07de/d025/bbe9/eb133f9e6181e4f15f4c37bf6e0799bf.mp3?vuutv=7/FOJ80JuRTwWUmhNM9hZl2hRMDkbXk5aqWpLe355LRm4d2WWvA4OVxg1jAGeJGLmpJYaLXpj95V+SpDStTY60Sg47LgvCU+TBnYnnbMfQE=",
+                    url: "http://m801.music.126.net/20260926130305/4564f78678d3b413b61c618c9c7e3efb/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759282867/07de/d025/bbe9/eb133f9e6181e4f15f4c37bf6e0799bf.mp3?vuutv=hZmNwUXV2Lmuuq1phHbJjBD/bg+afxYHTqITgRD4GQVvXoKvry4d4DqccrN4Lk8KKP3rbrnNzB/6f0QSTXq5LG7stELZoBB150qcUYEVWYc=",
                     file_type: "mp3",
                 },
             ),
@@ -1791,7 +1791,7 @@ AlbumInfo {
             url: Some(
                 SongUrlData {
                     id: 3410966267,
-                    url: "http://m701.music.126.net/20260926003810/6a7dada068612134ed0c19f7b466096c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759309131/92f0/78e8/b931/7f1750192ec9ccafb3ad99efc5593b7c.mp3?vuutv=QycGxZKAXENya44DIW6WREH5RKhOHwB59kG8w7tst8pQA0Ta1liu0hqrT9U4fWOVKAayCumclZlx63WjKozTq+rdgqSszt7FQpMbfE9AmwI=",
+                    url: "http://m801.music.126.net/20260926130305/eeafe16bfad9280a1eedd9f044b4cdc3/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/81759309131/92f0/78e8/b931/7f1750192ec9ccafb3ad99efc5593b7c.mp3?vuutv=eagCBP/xowvyzEjuJH4jJfK9Chu3swyUdeLOySGASQFylQ6J8DyxJg4mJG00cIIFdMA9t3IOukerHNr60wseemT+E92BAvx5rZHC1U+HEGQ=",
                     file_type: "mp3",
                 },
             ),

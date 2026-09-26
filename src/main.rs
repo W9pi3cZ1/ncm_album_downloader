@@ -46,7 +46,8 @@ async fn main() {
 
     let mut client_builder = Client::builder()
         .redirect(reqwest::redirect::Policy::limited(10))
-        .timeout(std::time::Duration::from_secs(10));
+        .read_timeout(std::time::Duration::from_secs(30))
+        .timeout(std::time::Duration::from_secs(86400));
     let jar;
     match args.cookies {
         Some(path_to_cookies) => {

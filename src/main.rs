@@ -1,6 +1,7 @@
 mod api;
 mod cookie_loader;
 mod util;
+mod lyric;
 
 use reqwest_cookie_store::CookieStoreMutex;
 

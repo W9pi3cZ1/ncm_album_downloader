@@ -1,4 +1,7 @@
-use crate::util::{AlbumSavePath, extract_album_id, get_disc_subtitle, url_filename};
+use crate::{
+    lyric::{LyricOutput, merge_lyrics},
+    util::{AlbumSavePath, extract_album_id, get_disc_subtitle, url_filename},
+};
 
 use reqwest::Client;
 use tokio::fs;
@@ -175,6 +178,10 @@ pub struct SongDetail {
     pub al: SongAlbum,
     pub no: u64,
     pub cd: DiscInfo,
+    #[serde(skip)]
+    pub url: Option<SongUrlData>,
+    #[serde(skip)]
+    pub lyric: Option<LyricOutput>,
 }
 
 #[allow(dead_code)]
@@ -184,9 +191,6 @@ pub struct SongDetailAl {
     pub d: SongDetail,
 
     pub privilege: Privilege,
-
-    #[serde(skip)]
-    pub url: Option<SongUrlData>,
 }
 
 #[allow(dead_code)]
@@ -243,6 +247,25 @@ pub fn resolve_discs(songs: &mut [SongDetailAl]) {
 pub struct SongDetails {
     pub songs: Vec<SongDetail>,
     pub privileges: Vec<Privilege>,
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Deserialize)]
+pub struct LyricPayload {
+    #[serde(default)]
+    pub lyric: String,
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Deserialize)]
+pub struct LyricResponse {
+    #[serde(default)]
+    pub lrc: Option<LyricPayload>,
+    #[serde(default)]
+    pub tlyric: Option<LyricPayload>,
+    #[serde(default)]
+    pub romalrc: Option<LyricPayload>,
+    // klyric 是逐字歌词，这里先忽略
 }
 
 #[allow(dead_code)]
@@ -392,7 +415,7 @@ impl AlbumDownloaded {
         let mut downloads = HashMap::new();
         push_task(&mut downloads, info.album.pic_url.clone());
         for x in &info.songs {
-            push_task(&mut downloads, x.url.clone().unwrap().url);
+            push_task(&mut downloads, x.d.url.clone().unwrap().url);
             push_task(&mut downloads, x.d.al.pic_url.clone());
         }
         AlbumDownloaded { paths, downloads }
@@ -479,7 +502,7 @@ impl NCMAPI {
         for (i, data) in songs.iter_mut().enumerate() {
             data.d = details.songs[i].clone();
             data.privilege = details.privileges[i].clone();
-            data.url = Some(
+            data.d.url = Some(
                 urls.data
                     .iter()
                     .find(|x| x.id == data.d.id)
@@ -490,8 +513,68 @@ impl NCMAPI {
         Some(())
     }
 
+    async fn refresh_album_lyrics(&self, songs: &mut [SongDetailAl]) {
+        // 先把 id 复制出来，避免和后面的可变借用冲突
+        let ids: Vec<u64> = songs.iter().map(|s| s.d.id).collect();
+        let total = ids.len() as u64;
+        if total == 0 {
+            return;
+        }
+
+        let pb = ProgressBar::new(total);
+        pb.set_style(
+            ProgressStyle::with_template(
+                "{spinner:.green} {msg:25!} [{bar:40.cyan/blue}] {pos}/{len} ({eta})",
+            )
+            .unwrap()
+            .progress_chars("=>-"),
+        );
+        pb.set_message("LYRICS");
+        pb.enable_steady_tick(Duration::from_millis(100));
+
+        let futures = ids.into_iter().enumerate().map(|(i, id)| {
+            let client = self.client.clone();
+            let attempts = self.attempts;
+            let pb = pb.clone();
+            async move {
+                let url = format!("{}/lyric?id={}", NCMEAPI_URL, id);
+                let resp = with_retry(
+                    || {
+                        let c = client.clone();
+                        let a = url.clone();
+                        async move { c.get(a).send().await?.json::<LyricResponse>().await }
+                    },
+                    attempts,
+                )
+                .await
+                .ok();
+                pb.inc(1);
+                (i, resp)
+            }
+        });
+
+        let results: Vec<(usize, Option<LyricResponse>)> = stream::iter(futures)
+            .buffer_unordered(self.concurrent)
+            .collect()
+            .await;
+
+        pb.finish_with_message("LYRICS DONE");
+
+        for (i, resp) in results {
+            let Some(r) = resp else { continue };
+            let lrc = r.lrc.map(|x| x.lyric).unwrap_or_default();
+            let tlyric = r.tlyric.map(|x| x.lyric).unwrap_or_default();
+            let romalrc = r.romalrc.map(|x| x.lyric).unwrap_or_default();
+            let merged = merge_lyrics(&lrc, &tlyric, &romalrc);
+            if !merged.orig.is_empty() {
+                songs[i].d.lyric = Some(merged);
+            }
+        }
+    }
+
     pub async fn get_album_info(&self, album_id: u64, quality: AudioQuality) -> Option<AlbumInfo> {
         let api_address = format!("{}/album?id={}&os=pc", NCMEAPI_URL, album_id);
+        eprintln!("GETTING_ALBUM_INFO");
         let mut res: AlbumInfo = with_retry(
             || {
                 let c = self.client.clone();
@@ -502,8 +585,12 @@ impl NCMAPI {
         )
         .await
         .ok()?;
+        eprintln!("REFRESHING_TRACKS");
         self.refresh_album_tracks(&mut res.songs, quality).await;
+        eprintln!("RESOLVING_DISCS");
         resolve_discs(&mut res.songs);
+        eprintln!("REFRESHING_LYRICS");
+        self.refresh_album_lyrics(&mut res.songs).await;
         Some(res)
     }
 

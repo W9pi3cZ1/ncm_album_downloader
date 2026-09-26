@@ -90,6 +90,34 @@ pub fn get_disc_subtitle(disc_raw: String) -> String {
     disc_name.to_owned()
 }
 
+fn sanitize_filename_component(name: &str) -> String {
+    let mut out = String::with_capacity(name.len());
+
+    for ch in name.chars() {
+        match ch {
+            '/' => out.push('／'),
+            '\\' => out.push('＼'),
+            ':' => out.push('：'),
+            '*' => out.push('＊'),
+            '?' => out.push('？'),
+            '"' => out.push('＂'),
+            '<' => out.push('＜'),
+            '>' => out.push('＞'),
+            '|' => out.push('｜'),
+            c if c.is_control() => out.push('_'),
+            c => out.push(c),
+        }
+    }
+
+    // Windows 下文件名末尾不能是空格或点
+    let trimmed = out.trim().trim_end_matches('.').trim_end();
+    if trimmed.is_empty() {
+        "_".to_owned()
+    } else {
+        trimmed.to_owned()
+    }
+}
+
 #[derive(Clone)]
 pub struct AlbumSavePath {
     pub album_path: PathBuf,
@@ -133,6 +161,7 @@ fn write_audio_metadata(
     release_date: Option<String>,
     cover_data: Option<&[u8]>,
     cover_mime: Option<MimeType>,
+    lyric: Option<&str>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     // 1. 读取文件（lofty 自动探测格式）
     let mut tagged_file = Probe::open(path)?.read()?;
@@ -199,6 +228,12 @@ fn write_audio_metadata(
 
         tag.push_picture(builder.build());
     }
+    
+    if let Some(l) = lyric {
+        if !l.is_empty() {
+            tag.insert_text(ItemKey::Lyrics, l.to_owned());
+        }
+    }
 
     // 6. 落盘（lofty 会就地重写 ID3v2 / 追加 Vorbis Comment 块）
     tagged_file.save_to_path(path, WriteOptions::default())?;
@@ -248,6 +283,7 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
 
     let total_track = info.songs.len();
     for x in info.songs {
+        let safe_name = sanitize_filename_component(&x.d.name);
         let track_cover_path = get_tmp_path(x.d.al.pic_url, &downloaded);
         // Prepare Cover MIME
         let cover_mime = match track_cover_path
@@ -263,7 +299,7 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
         };
         let cover_data = fs::read(&track_cover_path).ok();
         //
-        let track_tmp_path = get_tmp_path(x.url.unwrap().url, &downloaded);
+        let track_tmp_path = get_tmp_path(x.d.url.unwrap().url, &downloaded);
         let disc_fmt;
         let track_fmt;
         let cd: DiscInfo = x.d.cd;
@@ -277,16 +313,47 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
             "{}{}_{}.{}",
             disc_fmt,
             track_fmt,
-            x.d.name,
+            safe_name,
             track_tmp_path.extension().unwrap().to_string_lossy()
         );
         let song_path = downloaded.paths.album_path.join(&filename);
         eprintln!("WRITING {}", &filename);
         fs::copy(track_tmp_path, &song_path).unwrap();
         let artists: Vec<String> = x.d.ar.iter().map(|a| a.name.clone()).collect();
+        let mix_lyric;
+        if let Some(lyric_output) = x.d.lyric {
+            mix_lyric = Some(lyric_output.mix);
+            if !lyric_output.orig.is_empty() {
+                let lrc_name = format!("{}{}_{}.lrc", disc_fmt, track_fmt, safe_name);
+                eprintln!("WRITING {}", &lrc_name);
+                let lrc_path = downloaded.paths.album_path.join(&lrc_name);
+                if let Err(e) = fs::write(&lrc_path, lyric_output.orig) {
+                    eprintln!("ORIG_LYRIC_WRITE_FAIL {}: {}", lrc_path.display(), e);
+                }
+            }
+            if !lyric_output.trans.is_empty() {
+                let lrc_name = format!("{}{}_{}.zh.lrc", disc_fmt, track_fmt, safe_name);
+                eprintln!("WRITING {}", &lrc_name);
+                let lrc_path = downloaded.paths.album_path.join(&lrc_name);
+                if let Err(e) = fs::write(&lrc_path, lyric_output.trans) {
+                    eprintln!("TRANS_LYRIC_WRITE_FAIL {}: {}", lrc_path.display(), e);
+                }
+            }
+            if !lyric_output.roma.is_empty() {
+                let lrc_name = format!("{}{}_{}.romaji.lrc", disc_fmt, track_fmt, safe_name);
+                eprintln!("WRITING {}", &lrc_name);
+                let lrc_path = downloaded.paths.album_path.join(&lrc_name);
+                if let Err(e) = fs::write(&lrc_path, lyric_output.roma) {
+                    eprintln!("ROMA_LYRIC_WRITE_FAIL {}: {}", lrc_path.display(), e);
+                }
+            }
+        } else {
+            mix_lyric = None
+        }
+        eprintln!("WRITING_META {}", &filename);
         if let Err(e) = write_audio_metadata(
             &song_path,
-            &x.d.name,
+            &safe_name,
             &artists,
             &album_name,
             &album_artist,
@@ -298,6 +365,7 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
             release_date.clone(), // ← 传完整日期
             cover_data.as_deref(),
             cover_mime,
+            mix_lyric.as_deref(),
         ) {
             eprintln!("META_WRITE_FAIL {}: {}", song_path.display(), e);
         };

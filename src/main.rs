@@ -9,9 +9,7 @@ use clap::Parser;
 use reqwest::Client;
 
 use crate::{
-    api::{AudioQuality, NCMAPI},
-    cookie_loader::parse_cookie_txt,
-    util::make_album,
+    api::{AudioQuality, NCMAPI}, cookie_loader::parse_cookie_txt, util::{cleanup, make_album},
 };
 pub use api::{NCMEAPI_DOMAIN, NCMEAPI_URL};
 
@@ -82,5 +80,6 @@ async fn main() {
     let album_info = ncmapi.get_album_info(album_id, args.quality).await.unwrap();
     println!("{:#?}", album_info);
     let downloaded = ncmapi.download_album(&album_info, args.output).await;
-    make_album(album_info, downloaded);
+    make_album(album_info, &downloaded);
+    cleanup(&downloaded);
 }

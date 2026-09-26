@@ -255,7 +255,7 @@ fn detect_image_mime(data: &[u8]) -> Option<MimeType> {
     }
 }
 
-pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
+pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
     // COPY cover.EXT
     let cover_tmp_path = get_tmp_path(info.album.pic_url, &downloaded);
     let cover_bytes = fs::read(&cover_tmp_path).unwrap();
@@ -383,4 +383,10 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
             eprintln!("META_WRITE_FAIL {}: {}", song_path.display(), e);
         };
     }
+}
+
+pub fn cleanup(downloaded: &AlbumDownloaded){
+    eprintln!("CLEANUP {}", downloaded.paths.tmp_path.clone().to_string_lossy());
+    fs::remove_dir(downloaded.paths.tmp_path.clone()).unwrap();
+    println!("{}", downloaded.paths.album_path.clone().to_string_lossy());
 }

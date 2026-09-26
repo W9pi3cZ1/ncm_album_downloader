@@ -240,14 +240,34 @@ fn write_audio_metadata(
     Ok(())
 }
 
+fn detect_image_mime(data: &[u8]) -> Option<MimeType> {
+    let kind = infer::get(data)?;
+    if kind.matcher_type() != infer::MatcherType::Image {
+        return None;
+    }
+    match kind.mime_type() {
+        "image/png" => Some(MimeType::Png),
+        "image/jpeg" => Some(MimeType::Jpeg),
+        "image/gif" => Some(MimeType::Gif),
+        "image/bmp" => Some(MimeType::Bmp),
+        "image/tiff" => Some(MimeType::Tiff),
+        _ => Some(MimeType::Unknown(kind.mime_type().to_owned())),   // 或者扩展 MimeType::Unknown
+    }
+}
+
 pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
     // COPY cover.EXT
     let cover_tmp_path = get_tmp_path(info.album.pic_url, &downloaded);
+    let cover_bytes = fs::read(&cover_tmp_path).unwrap();
+    let cover_ext = match infer::get(&cover_bytes){
+        Some(x) => x.extension(),
+        None => "jpg",
+    };
     let cover_path = downloaded.paths.album_path.join(format!(
         "cover.{}",
-        cover_tmp_path.extension().unwrap().to_string_lossy()
+        cover_ext
     ));
-    fs::copy(cover_tmp_path, cover_path).unwrap();
+    fs::copy(&cover_tmp_path, &cover_path).unwrap();
     // COPY songs
     // ---- 专辑级元数据（只计算一次）----
     let album_name = info.album.name.clone();
@@ -285,19 +305,12 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
     for x in info.songs {
         let safe_name = sanitize_filename_component(&x.d.name);
         let track_cover_path = get_tmp_path(x.d.al.pic_url, &downloaded);
+        let cover_bytes = fs::read(&track_cover_path).ok();
         // Prepare Cover MIME
-        let cover_mime = match track_cover_path
-            .extension()
-            .and_then(|s| s.to_str())
-            .map(|s| s.to_ascii_lowercase())
-            .as_deref()
-        {
-            Some("png") => Some(MimeType::Png),
-            Some("jpg") | Some("jpeg") => Some(MimeType::Jpeg),
-            Some("bmp") => Some(MimeType::Bmp),
-            _ => None,
+        let cover_mime = match &cover_bytes {
+            Some(x) => detect_image_mime(&x),
+            None => None,
         };
-        let cover_data = fs::read(&track_cover_path).ok();
         //
         let track_tmp_path = get_tmp_path(x.d.url.unwrap().url, &downloaded);
         let disc_fmt;
@@ -363,7 +376,7 @@ pub fn make_album(info: AlbumInfo, downloaded: AlbumDownloaded) {
             total_track as u32,
             copyright.clone(),
             release_date.clone(), // ← 传完整日期
-            cover_data.as_deref(),
+            cover_bytes.as_deref(),
             cover_mime,
             mix_lyric.as_deref(),
         ) {

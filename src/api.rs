@@ -1,6 +1,9 @@
 use crate::{
     lyric::{LyricOutput, merge_lyrics},
-    util::{AlbumSavePath, extract_album_id, get_disc_subtitle, url_filename},
+    util::{
+        AlbumSavePath, extract_album_id, get_disc_subtitle, sanitize_filename_component,
+        url_filename,
+    },
 };
 
 use reqwest::Client;
@@ -451,7 +454,8 @@ pub struct AlbumDownloaded {
 impl AlbumDownloaded {
     fn new(info: &AlbumInfo, save_path: String) -> Self {
         // init folders
-        let album_path = PathBuf::from(save_path).join(info.album.name.clone());
+        let album_path =
+            PathBuf::from(save_path).join(sanitize_filename_component(&info.album.name.clone()));
         let paths = AlbumSavePath::new(album_path);
         paths.init();
         // prepare download tasks

@@ -90,7 +90,7 @@ pub fn get_disc_subtitle(disc_raw: String) -> String {
     disc_name.trim().to_owned()
 }
 
-fn sanitize_filename_component(name: &str) -> String {
+pub fn sanitize_filename_component(name: &str) -> String {
     let mut out = String::with_capacity(name.len());
 
     for ch in name.chars() {
@@ -243,9 +243,10 @@ fn write_audio_metadata(
         // 完整日期 → 标准字段（ID3v2: TDRC；Vorbis: DATE；MP4: ©day）
         tag.insert_text(ItemKey::RecordingDate, d.clone());
 
+        // 我不写 Year 了，在FLAC和MP3同时存在的场景这样写Navidrome会出现问题
         // 同时写一份纯年份，兼容只认 YEAR 的老播放器 / 老设备
         // 注意：只取前 4 位字符
-        tag.insert_text(ItemKey::Year, d[..4].to_string());
+        // tag.insert_text(ItemKey::Year, d[..4].to_string());
     }
 
     if let Some(c) = copyright.as_ref().filter(|s| !s.is_empty()) {

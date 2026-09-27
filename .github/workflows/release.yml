@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*'
+    branches:
+      - master
   workflow_dispatch:
     inputs:
       tag:
@@ -11,7 +13,7 @@ on:
         required: true
         type: string
       publish:
-        description: '立即发布正式 Release（不勾选则创建为 draft）'
+        description: '立即发布正式 Release（不勾选则创建为 prerelease）'
         required: false
         type: boolean
         default: false
@@ -24,23 +26,62 @@ env:
   BIN_NAME: ncm_album_downloader
 
 jobs:
+  setup:
+    name: Resolve release info
+    runs-on: ubuntu-latest
+    outputs:
+      tag:        ${{ steps.info.outputs.tag }}
+      name:       ${{ steps.info.outputs.name }}
+      prerelease: ${{ steps.info.outputs.prerelease }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - id: info
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref_type }}" = "tag" ]; then
+            TAG="${{ github.ref_name }}"
+            NAME="$TAG"
+            PRERELEASE="false"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.tag }}"
+            NAME="$TAG"
+            if [ "${{ inputs.publish }}" = "true" ]; then
+              PRERELEASE="false"
+            else
+              PRERELEASE="true"
+            fi
+          else
+            # push 到 master：固定 tag=nightly，每次覆盖同一个 release
+            SHORT_SHA="$(git rev-parse --short=7 HEAD)"
+            DATE="$(date -u +%Y%m%d)"
+            TAG="nightly"
+            NAME="nightly-${DATE}-${SHORT_SHA}"
+            PRERELEASE="true"
+          fi
+          {
+            echo "tag=${TAG}"
+            echo "name=${NAME}"
+            echo "prerelease=${PRERELEASE}"
+          } >> "$GITHUB_OUTPUT"
+          echo "Resolved: tag=${TAG} name=${NAME} prerelease=${PRERELEASE}"
+
   build:
     name: Build ${{ matrix.name }}
+    needs: setup
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
-          # ---- Linux (glibc) ----
           - { os: ubuntu-latest,    target: x86_64-unknown-linux-gnu,   name: linux-x86_64,       archive: tar.gz }
           - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-gnu,  name: linux-aarch64,      archive: tar.gz }
-          # ---- Linux (musl, 全静态) ----
           - { os: ubuntu-latest,    target: x86_64-unknown-linux-musl,  name: linux-x86_64-musl,  archive: tar.gz }
           - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-musl, name: linux-aarch64-musl, archive: tar.gz }
-          # ---- Windows ----
           - { os: windows-latest,   target: x86_64-pc-windows-msvc,     name: windows-x86_64,     archive: zip    }
           - { os: windows-11-arm,   target: aarch64-pc-windows-msvc,    name: windows-aarch64,    archive: zip    }
-          # ---- macOS ----
           - { os: macos-latest,     target: aarch64-apple-darwin,       name: macos-aarch64,      archive: tar.gz }
           - { os: macos-latest,     target: x86_64-apple-darwin,        name: macos-x86_64,       archive: tar.gz }
 
@@ -49,23 +90,27 @@ jobs:
         with:
           ref: ${{ inputs.tag || github.ref }}
 
-      # Linux 依赖：
+      - name: Show commit being built
+        shell: bash
+        run: |
+          echo "Ref:     ${{ inputs.tag || github.ref }}"
+          echo "SHA:     $(git rev-parse HEAD)"
+          echo "Subject: $(git log -1 --pretty=%s)"
+
       - name: Install Linux build deps
         if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pkg-config musl-tools
 
-      # musl target 需要告诉 cc-rs 和 rustc 使用 musl-gcc
-      # （host 和 target 架构相同，所以 musl-gcc 直接就是对的架构）
       - name: Configure musl toolchain
         if: endsWith(matrix.target, '-musl')
         shell: bash
         run: |
           TARGET="${{ matrix.target }}"
           TARGET_UPPER="$(echo "$TARGET" | tr 'a-z-' 'A-Z_')"
-          echo "CC_${TARGET}=musl-gcc"                   >> "$GITHUB_ENV"
-          echo "CC_${TARGET_UPPER}=musl-gcc"             >> "$GITHUB_ENV"
+          echo "CC_${TARGET}=musl-gcc"                       >> "$GITHUB_ENV"
+          echo "CC_${TARGET_UPPER}=musl-gcc"                 >> "$GITHUB_ENV"
           echo "CARGO_TARGET_${TARGET_UPPER}_LINKER=musl-gcc" >> "$GITHUB_ENV"
 
       - name: Install Rust toolchain
@@ -86,7 +131,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          TAG="${{ inputs.tag || github.ref_name }}"
+          TAG="${{ needs.setup.outputs.tag }}"
           SRC="target/${{ matrix.target }}/release"
           STAGE="dist/stage"
           ARCHIVE_NAME="${BIN_NAME}-${TAG}-${{ matrix.name }}.${{ matrix.archive }}"
@@ -117,11 +162,12 @@ jobs:
           name: ${{ matrix.name }}
           path: ${{ env.ARCHIVE }}
           if-no-files-found: error
-          retention-days: 7
+          # 90 天，GitHub 免费版上限；旧 nightly 靠这个留存
+          retention-days: 90
 
   release:
     name: Publish release
-    needs: build
+    needs: [setup, build]
     runs-on: ubuntu-latest
     steps:
       - name: Download all artifacts
@@ -136,9 +182,10 @@ jobs:
       - name: Create / update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.tag || github.ref_name }}
-          name:     ${{ inputs.tag || github.ref_name }}
-          draft: ${{ github.event_name == 'push' || inputs.publish != true }}
+          # nightly 固定用同一个 tag，会自动找到已有 release 并更新
+          tag_name:   ${{ needs.setup.outputs.tag }}
+          name:       ${{ needs.setup.outputs.name }}
+          prerelease: ${{ needs.setup.outputs.prerelease }}
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: artifacts/**

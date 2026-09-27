@@ -64,9 +64,11 @@ jobs:
         if: endsWith(matrix.target, '-musl')
         shell: bash
         run: |
-          echo "CC_${{ matrix.target }}"                    >> "$GITHUB_ENV"
-          echo "  = musl-gcc"                               >> "$GITHUB_ENV"
-          echo "CARGO_TARGET_$(echo ${{ matrix.target }} | tr 'a-z-' 'A-Z_')_LINKER=musl-gcc" >> "$GITHUB_ENV"
+          TARGET="${{ matrix.target }}"
+          TARGET_UPPER="$(echo "$TARGET" | tr 'a-z-' 'A-Z_')"
+          echo "CC_${TARGET}=musl-gcc"                   >> "$GITHUB_ENV"
+          echo "CC_${TARGET_UPPER}=musl-gcc"             >> "$GITHUB_ENV"
+          echo "CARGO_TARGET_${TARGET_UPPER}_LINKER=musl-gcc" >> "$GITHUB_ENV"
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable

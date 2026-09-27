@@ -87,7 +87,7 @@ pub fn get_disc_subtitle(disc_raw: String) -> String {
             }
         }
     }
-    disc_name.to_owned()
+    disc_name.trim().to_owned()
 }
 
 fn sanitize_filename_component(name: &str) -> String {
@@ -155,6 +155,7 @@ fn write_audio_metadata(
     album_artists: &[String],
     track_number: u32,
     disc_number: u32,
+    disc_subtitle: String,
     total_discs: u32,
     total_tracks: u32,
     copyright: Option<String>,
@@ -226,6 +227,9 @@ fn write_audio_metadata(
     }
     if disc_number > 0 {
         tag.set_disk(disc_number);
+    }
+    if !disc_subtitle.is_empty() {
+        tag.insert_text(ItemKey::SetSubtitle, disc_subtitle);
     }
 
     // 4. 扩展字段（用 ItemKey 兼容多格式）
@@ -331,8 +335,9 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
     } else {
         None
     };
+    let cd_fmt_w = (info.songs[0].d.cd.total.ilog10() + 1) as usize;
+    let track_fmt_w = (info.songs.len().ilog10() + 1) as usize;
 
-    let total_track = info.songs.len();
     for x in info.songs {
         let safe_name = sanitize_filename_component(&x.d.name);
         let track_cover_path = get_tmp_path(x.d.al.pic_url, &downloaded);
@@ -348,11 +353,11 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
         let track_fmt;
         let cd: DiscInfo = x.d.cd;
         if cd.total > 1 {
-            disc_fmt = format!("{:0w$}.", cd.number, w = (cd.total.ilog10() + 1) as usize);
+            disc_fmt = format!("{:0cd_fmt_w$}.", cd.number);
         } else {
             disc_fmt = String::new()
         }
-        track_fmt = format!("{:0w$}", x.d.no, w = (total_track.ilog10() + 1) as usize);
+        track_fmt = format!("{:0track_fmt_w$}", x.d.no);
         let filename = format!(
             "{}{}_{}.{}",
             disc_fmt,
@@ -405,10 +410,11 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
             &artists,
             &album_name,
             &album_artist,
-            x.d.no as u32,
+            x.d.no,
             cd.number,
+            cd.subtitle,
             cd.total,
-            total_track as u32,
+            cd.tracks,
             copyright.clone(),
             release_date.clone(), // ← 传完整日期
             cover_bytes.as_deref(),

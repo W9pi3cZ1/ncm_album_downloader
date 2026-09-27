@@ -112,6 +112,8 @@ pub struct DiscInfo {
     pub number: u32,
     /// Total Disc
     pub total: u32,
+    /// Total Tracks of current Disc
+    pub tracks: u32,
     /// Disc Name
     pub subtitle: String,
     /// Raw (serde fill it)
@@ -176,7 +178,7 @@ pub struct SongDetail {
     pub name: String,
     pub ar: Vec<SongArtist>,
     pub al: SongAlbum,
-    pub no: u64,
+    pub no: u32,
     pub cd: DiscInfo,
     #[serde(skip)]
     pub url: Option<SongUrlData>,
@@ -215,33 +217,74 @@ pub struct SongAlbum {
 }
 
 #[allow(dead_code)]
+#[allow(dead_code)]
 pub fn resolve_discs(songs: &mut [SongDetailAl]) {
     if songs.is_empty() {
         return;
     }
 
+    // ---- 第 1 趟：分配碟号 / 曲目号，提取碟片副标题 ----
     let mut cur_disc_number = 1;
     let mut cur_track_number = 1;
 
-    // resort disc/track number, extract disc subtitle
-    songs[0].d.cd.subtitle = get_disc_subtitle(songs[0].d.cd.raw.clone()).to_owned();
+    songs[0].d.cd.subtitle = get_disc_subtitle(songs[0].d.cd.raw.clone());
     songs[0].d.cd.number = cur_disc_number;
     songs[0].d.no = cur_track_number;
     cur_track_number += 1;
+
     for i in 1..songs.len() {
         if songs[i].d.cd.raw != songs[i - 1].d.cd.raw {
             cur_disc_number += 1;
             cur_track_number = 1;
         }
-        songs[i].d.cd.subtitle = get_disc_subtitle(songs[i].d.cd.raw.clone()).to_owned();
+        songs[i].d.cd.subtitle = get_disc_subtitle(songs[i].d.cd.raw.clone());
         songs[i].d.cd.number = cur_disc_number;
         songs[i].d.no = cur_track_number;
         cur_track_number += 1;
     }
-    for x in songs {
-        x.d.cd.total = cur_disc_number;
+
+    let total_discs = cur_disc_number;
+
+    // ---- 第 2 趟：按碟号统计曲目数 ----
+    let mut track_counts: HashMap<_, _> = HashMap::new();
+    for s in songs.iter() {
+        *track_counts.entry(s.d.cd.number).or_insert(0) += 1;
+    }
+
+    // ---- 第 3 趟：回填 total / tracks ----
+    for s in songs.iter_mut() {
+        s.d.cd.total = total_discs;
+        s.d.cd.tracks = track_counts.get(&s.d.cd.number).copied().unwrap_or(0);
     }
 }
+// old version
+// pub fn resolve_discs(songs: &mut [SongDetailAl]) {
+//     if songs.is_empty() {
+//         return;
+//     }
+
+//     let mut cur_disc_number = 1;
+//     let mut cur_track_number = 1;
+
+//     // resort disc/track number, extract disc subtitle
+//     songs[0].d.cd.subtitle = get_disc_subtitle(songs[0].d.cd.raw.clone()).to_owned();
+//     songs[0].d.cd.number = cur_disc_number;
+//     songs[0].d.no = cur_track_number;
+//     cur_track_number += 1;
+//     for i in 1..songs.len() {
+//         if songs[i].d.cd.raw != songs[i - 1].d.cd.raw {
+//             cur_disc_number += 1;
+//             cur_track_number = 1;
+//         }
+//         songs[i].d.cd.subtitle = get_disc_subtitle(songs[i].d.cd.raw.clone()).to_owned();
+//         songs[i].d.cd.number = cur_disc_number;
+//         songs[i].d.no = cur_track_number;
+//         cur_track_number += 1;
+//     }
+//     for x in songs {
+//         x.d.cd.total = cur_disc_number;
+//     }
+// }
 
 #[derive(Debug, Deserialize)]
 pub struct SongDetails {

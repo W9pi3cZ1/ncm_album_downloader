@@ -3,8 +3,11 @@ name = "ncm_album_downloader"
 version = "0.1.1"
 edition = "2024"
 
+[target.'cfg(target_env = "musl")'.dependencies]
+openssl     = { version = "0.10", features = ["vendored"] }
+openssl-sys = { version = "0.9",  features = ["vendored"] }
+
 [dependencies]
-chrono = "0.4.45"
 clap = { version = "4.6.7", features = ["derive"] }
 cookie = "0.18.2"
 cookie_store = { version = "0.22.1" }

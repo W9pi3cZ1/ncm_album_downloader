@@ -16,7 +16,6 @@ on:
         type: boolean
         default: false
 
-# 创建/更新 release 需要 contents:write
 permissions:
   contents: write
 
@@ -33,27 +32,27 @@ jobs:
       matrix:
         include:
           # ---- Linux (glibc) ----
-          - { os: ubuntu-latest, target: x86_64-unknown-linux-gnu,       name: linux-x86_64,       archive: tar.gz, cross: false }
-          - { os: ubuntu-latest, target: aarch64-unknown-linux-gnu,      name: linux-aarch64,      archive: tar.gz, cross: true  }
-          # ---- Linux (musl, 全静态, 可直接跑在 alpine 等) ----
-          - { os: ubuntu-latest, target: x86_64-unknown-linux-musl,      name: linux-x86_64-musl,  archive: tar.gz, cross: true  }
-          - { os: ubuntu-latest, target: aarch64-unknown-linux-musl,     name: linux-aarch64-musl, archive: tar.gz, cross: true  }
-          - { os: ubuntu-latest, target: armv7-unknown-linux-musleabihf, name: linux-armv7-musl,   archive: tar.gz, cross: true  }
+          - { os: ubuntu-latest,    target: x86_64-unknown-linux-gnu,       name: linux-x86_64,       archive: tar.gz, cross: false }
+          - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-gnu,      name: linux-aarch64,      archive: tar.gz, cross: false }
+          # ---- Linux (musl, 全静态) ----
+          - { os: ubuntu-latest,    target: x86_64-unknown-linux-musl,      name: linux-x86_64-musl,  archive: tar.gz, cross: true  }
+          - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-musl,     name: linux-aarch64-musl, archive: tar.gz, cross: true  }
           # ---- Windows ----
-          - { os: windows-latest, target: x86_64-pc-windows-msvc,        name: windows-x86_64,     archive: zip,    cross: false }
+          - { os: windows-latest,   target: x86_64-pc-windows-msvc,         name: windows-x86_64,     archive: zip,    cross: false }
+          - { os: windows-11-arm,  target: aarch64-pc-windows-msvc, name: windows-aarch64, archive: zip, cross: false }
           # ---- macOS ----
-          - { os: macos-latest,   target: aarch64-apple-darwin,          name: macos-aarch64,      archive: tar.gz, cross: false }
-          - { os: macos-latest,   target: x86_64-apple-darwin,           name: macos-x86_64,       archive: tar.gz, cross: false }
+          - { os: macos-latest,     target: aarch64-apple-darwin,           name: macos-aarch64,      archive: tar.gz, cross: false }
+          - { os: macos-latest,     target: x86_64-apple-darwin,            name: macos-x86_64,       archive: tar.gz, cross: false }
 
     steps:
-      # 手动触发时用输入的 tag；push tag 时用当前 ref
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.tag || github.ref }}
 
-      # 只在「本地编译 + Linux glibc」时才有必要装 openssl 头文件
+      # 只在「本地 cargo 编 glibc」时装系统 openssl
+      # musl 走 cross（容器内自带），不需要 host 上的 libssl-dev
       - name: Install Linux build deps
-        if: matrix.os == 'ubuntu-latest' && matrix.cross == false
+        if: (matrix.os == 'ubuntu-latest' || matrix.os == 'ubuntu-24.04-arm') && matrix.cross == false
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libssl-dev pkg-config
@@ -63,7 +62,6 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
-      # cross 用 Docker 镜像里自带的工具链，处理 musl / 交叉编译
       - name: Install cross
         if: matrix.cross
         uses: taiki-e/install-action@cross
@@ -93,19 +91,16 @@ jobs:
           ARCHIVE_NAME="${BIN_NAME}-${TAG}-${{ matrix.name }}.${{ matrix.archive }}"
           mkdir -p "$STAGE"
 
-          # 二进制
           if [ "${{ runner.os }}" = "Windows" ]; then
             cp "$SRC/${BIN_NAME}.exe" "$STAGE/"
           else
             cp "$SRC/${BIN_NAME}" "$STAGE/"
           fi
 
-          # 顺手带上文档 / 许可证
           for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE; do
             if [ -f "$f" ]; then cp "$f" "$STAGE/"; fi
           done
 
-          # 打归档（归档落在 dist/ 下）
           if [ "${{ matrix.archive }}" = "zip" ]; then
             (cd "$STAGE" && 7z a "../${ARCHIVE_NAME}" . >/dev/null)
           else
@@ -115,7 +110,6 @@ jobs:
           echo "ARCHIVE=dist/${ARCHIVE_NAME}" >> "$GITHUB_ENV"
           ls -lh "dist/${ARCHIVE_NAME}"
 
-      # 只上传 artifact，不碰 release
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -124,7 +118,6 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-  # 所有构建完成后再统一创建/更新 Release，避免多个 job 抢写导致 notes 重复
   release:
     name: Publish release
     needs: build
@@ -144,8 +137,6 @@ jobs:
         with:
           tag_name: ${{ inputs.tag || github.ref_name }}
           name:     ${{ inputs.tag || github.ref_name }}
-          # push tag → 强制 draft
-          # 手动触发 → 勾选 publish 则正式，否则 draft
           draft: ${{ github.event_name == 'push' || inputs.publish != true }}
           generate_release_notes: true
           fail_on_unmatched_files: true

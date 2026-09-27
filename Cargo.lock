@@ -867,6 +867,8 @@ dependencies = [
  "reqwest_cookie_store",
  "ring",
  "rustls",
+ "rustls-native-certs",
+ "rustls-platform-verifier",
  "serde",
  "serde_json",
  "tokio",

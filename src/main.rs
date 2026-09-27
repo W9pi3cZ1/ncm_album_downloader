@@ -4,6 +4,9 @@ mod lyric;
 mod util;
 
 use reqwest_cookie_store::CookieStoreMutex;
+use rustls::{ClientConfig, RootCertStore};
+use rustls_native_certs::load_native_certs;
+use rustls_platform_verifier::ConfigVerifierExt;
 
 use clap::Parser;
 use reqwest::Client;
@@ -40,6 +43,23 @@ struct Args {
     output: String,
 }
 
+fn build_tls_config() -> rustls::ClientConfig {
+    if std::env::var("TERMUX_VERSION").is_ok() {
+        // Termux 没有 JVM：用 rustls-native-certs，避免 platform verifier 的 panic
+        let mut root_store = RootCertStore::empty();
+        let certs = load_native_certs().expect("Failed to load native certs");
+        for cert in certs {
+            root_store.add(cert).unwrap();
+        }
+        ClientConfig::builder()
+            .with_root_certificates(root_store)
+            .with_no_client_auth()
+    } else {
+        // 正常 Android App：有 JVM，可以走平台验证器
+        ClientConfig::with_platform_verifier().expect("Failed to load client config")
+    }
+}
+
 #[tokio::main]
 async fn main() {
     let args = Args::parse();
@@ -50,6 +70,7 @@ async fn main() {
         .expect("Failed to install rustls crypto provider");
 
     let mut client_builder = Client::builder()
+        .use_preconfigured_tls(build_tls_config())
         .redirect(reqwest::redirect::Policy::limited(10))
         .read_timeout(std::time::Duration::from_secs(30))
         .timeout(std::time::Duration::from_secs(86400));

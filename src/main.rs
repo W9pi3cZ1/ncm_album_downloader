@@ -44,6 +44,11 @@ struct Args {
 async fn main() {
     let args = Args::parse();
 
+    // tls provider
+    rustls::crypto::ring::default_provider()
+        .install_default()
+        .expect("Failed to install rustls crypto provider");
+
     let mut client_builder = Client::builder()
         .redirect(reqwest::redirect::Policy::limited(10))
         .read_timeout(std::time::Duration::from_secs(30))

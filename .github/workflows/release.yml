@@ -50,13 +50,11 @@ jobs:
           ref: ${{ inputs.tag || github.ref }}
 
       # Linux 依赖：
-      #  - glibc target 需要 libssl-dev 走系统 openssl
-      #  - musl target 用 musl-tools 提供 musl-gcc，openssl 走 vendored 源码编译
       - name: Install Linux build deps
         if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libssl-dev pkg-config musl-tools
+          sudo apt-get install -y --no-install-recommends pkg-config musl-tools
 
       # musl target 需要告诉 cc-rs 和 rustc 使用 musl-gcc
       # （host 和 target 架构相同，所以 musl-gcc 直接就是对的架构）

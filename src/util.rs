@@ -186,16 +186,26 @@ fn write_audio_metadata(
     // 处理艺人名和专辑艺人名
     match tag.tag_type() {
         TagType::VorbisComments => {
-            // 清除可能已有的 TrackArtists / AlbumArtists（避免重复）
+            // 清除可能已有的 TrackArtist(s) / AlbumArtist(s)（避免重复）
+            tag.remove_key(ItemKey::TrackArtist);
             tag.remove_key(ItemKey::TrackArtists);
-            tag.remove_key(ItemKey::AlbumArtists);
             for artist in artists {
+                tag.push(TagItem::new(
+                    ItemKey::TrackArtist,
+                    ItemValue::Text(artist.clone()),
+                ));
                 tag.push(TagItem::new(
                     ItemKey::TrackArtists,
                     ItemValue::Text(artist.clone()),
                 ));
             }
+            tag.remove_key(ItemKey::AlbumArtist);
+            tag.remove_key(ItemKey::AlbumArtists);
             for al_artist in album_artists {
+                tag.push(TagItem::new(
+                    ItemKey::AlbumArtist,
+                    ItemValue::Text(al_artist.clone()),
+                ));
                 tag.push(TagItem::new(
                     ItemKey::AlbumArtists,
                     ItemValue::Text(al_artist.clone()),

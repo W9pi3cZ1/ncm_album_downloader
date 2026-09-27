@@ -10,7 +10,7 @@ use lofty::{
     file::{AudioFile, TaggedFileExt},
     picture::{MimeType, Picture, PictureType},
     probe::Probe,
-    tag::{Accessor, ItemKey, Tag},
+    tag::{Accessor, ItemKey, ItemValue, Tag, TagItem, TagType},
 };
 use std::path::Path;
 
@@ -152,7 +152,7 @@ fn write_audio_metadata(
     title: &str,
     artists: &[String],
     album: &str,
-    album_artist: &str,
+    album_artists: &[String],
     track_number: u32,
     disc_number: u32,
     total_discs: u32,
@@ -183,8 +183,33 @@ fn write_audio_metadata(
     // 3. 基础字段
     tag.set_title(title.to_owned());
     tag.set_album(album.to_owned());
-    // 网易云 API 里 ar 是数组，这里用 "; "
-    tag.set_artist(artists.join("; "));
+    // 处理艺人名和专辑艺人名
+    match tag.tag_type() {
+        TagType::VorbisComments => {
+            // 清除可能已有的 TrackArtists / AlbumArtists（避免重复）
+            tag.remove_key(ItemKey::TrackArtists);
+            tag.remove_key(ItemKey::AlbumArtists);
+            for artist in artists {
+                tag.push(TagItem::new(
+                    ItemKey::TrackArtists,
+                    ItemValue::Text(artist.clone()),
+                ));
+            }
+            for al_artist in album_artists {
+                tag.push(TagItem::new(
+                    ItemKey::AlbumArtists,
+                    ItemValue::Text(al_artist.clone()),
+                ));
+            }
+        }
+        _ => {
+            // ID3v2、MP4、APE 等：用连接字符串
+            tag.set_artist(artists.join("; "));
+            if !album_artists.is_empty() {
+                tag.insert_text(ItemKey::AlbumArtist, album_artists.join("; "));
+            }
+        }
+    }
 
     if track_number > 0 {
         tag.set_track(track_number);
@@ -199,9 +224,6 @@ fn write_audio_metadata(
     }
     if total_discs > 1 {
         tag.insert_text(ItemKey::DiscTotal, total_discs.to_string());
-    }
-    if !album_artist.is_empty() {
-        tag.insert_text(ItemKey::AlbumArtist, album_artist.to_owned());
     }
     if let Some(d) = &release_date {
         // 完整日期 → 标准字段（ID3v2: TDRC；Vorbis: DATE；MP4: ©day）
@@ -228,7 +250,7 @@ fn write_audio_metadata(
 
         tag.push_picture(builder.build());
     }
-    
+
     if let Some(l) = lyric {
         if !l.is_empty() {
             tag.insert_text(ItemKey::Lyrics, l.to_owned());
@@ -251,7 +273,7 @@ fn detect_image_mime(data: &[u8]) -> Option<MimeType> {
         "image/gif" => Some(MimeType::Gif),
         "image/bmp" => Some(MimeType::Bmp),
         "image/tiff" => Some(MimeType::Tiff),
-        _ => Some(MimeType::Unknown(kind.mime_type().to_owned())),   // 或者扩展 MimeType::Unknown
+        _ => Some(MimeType::Unknown(kind.mime_type().to_owned())), // 或者扩展 MimeType::Unknown
     }
 }
 
@@ -259,14 +281,14 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
     // COPY cover.EXT
     let cover_tmp_path = get_tmp_path(info.album.pic_url, &downloaded);
     let cover_bytes = fs::read(&cover_tmp_path).unwrap();
-    let cover_ext = match infer::get(&cover_bytes){
+    let cover_ext = match infer::get(&cover_bytes) {
         Some(x) => x.extension(),
         None => "jpg",
     };
-    let cover_path = downloaded.paths.album_path.join(format!(
-        "cover.{}",
-        cover_ext
-    ));
+    let cover_path = downloaded
+        .paths
+        .album_path
+        .join(format!("cover.{}", cover_ext));
     fs::copy(&cover_tmp_path, &cover_path).unwrap();
     // COPY songs
     // ---- 专辑级元数据（只计算一次）----
@@ -276,8 +298,7 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
         .artists
         .iter()
         .map(|a| a.name.clone())
-        .collect::<Vec<_>>()
-        .join("; ");
+        .collect::<Vec<_>>();
     let copyright = if info.album.company.is_empty() {
         None
     } else {
@@ -335,7 +356,11 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
         let artists: Vec<String> = x.d.ar.iter().map(|a| a.name.clone()).collect();
         let mix_lyric;
         if let Some(lyric_output) = x.d.lyric {
-            mix_lyric = Some(lyric_output.mix);
+            if !lyric_output.mix.is_empty() {
+                mix_lyric = Some(lyric_output.mix);
+            } else {
+                mix_lyric = None
+            }
             if !lyric_output.orig.is_empty() {
                 let lrc_name = format!("{}{}_{}.lrc", disc_fmt, track_fmt, safe_name);
                 eprintln!("WRITING {}", &lrc_name);
@@ -385,8 +410,11 @@ pub fn make_album(info: AlbumInfo, downloaded: &AlbumDownloaded) {
     }
 }
 
-pub fn cleanup(downloaded: &AlbumDownloaded){
-    eprintln!("CLEANUP {}", downloaded.paths.tmp_path.clone().to_string_lossy());
+pub fn cleanup(downloaded: &AlbumDownloaded) {
+    eprintln!(
+        "CLEANUP {}",
+        downloaded.paths.tmp_path.clone().to_string_lossy()
+    );
     fs::remove_dir_all(downloaded.paths.tmp_path.clone()).unwrap();
     println!("{}", downloaded.paths.album_path.clone().to_string_lossy());
 }

@@ -113,5 +113,10 @@ pub fn merge_lyrics(lrc: &str, tlyric: &str, romalrc: &str) -> LyricOutput {
             }
         }
     }
-    LyricOutput { orig: orig_out, trans: trans_out, roma: roma_out, mix: mix_out }
+    LyricOutput {
+        orig: orig_out,
+        trans: trans_out,
+        roma: roma_out,
+        mix: mix_out,
+    }
 }

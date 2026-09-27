@@ -1,7 +1,7 @@
 mod api;
 mod cookie_loader;
-mod util;
 mod lyric;
+mod util;
 
 use reqwest_cookie_store::CookieStoreMutex;
 
@@ -9,7 +9,9 @@ use clap::Parser;
 use reqwest::Client;
 
 use crate::{
-    api::{AudioQuality, NCMAPI}, cookie_loader::parse_cookie_txt, util::{cleanup, make_album},
+    api::{AudioQuality, NCMAPI},
+    cookie_loader::parse_cookie_txt,
+    util::{cleanup, make_album},
 };
 pub use api::{NCMEAPI_DOMAIN, NCMEAPI_URL};
 

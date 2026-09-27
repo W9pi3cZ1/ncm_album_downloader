@@ -1,9 +1,8 @@
-
 use std::fs::File;
 use std::io::Read;
 
-use cookie::{Expiration, time};
 use cookie::time::OffsetDateTime;
+use cookie::{Expiration, time};
 use cookie_store::RawCookie;
 use url::Url;
 
@@ -31,16 +30,24 @@ impl std::fmt::Display for LoadErr {
 impl std::error::Error for LoadErr {}
 
 impl From<std::io::Error> for LoadErr {
-    fn from(e: std::io::Error) -> Self { LoadErr::IO(e) }
+    fn from(e: std::io::Error) -> Self {
+        LoadErr::IO(e)
+    }
 }
 impl From<cookie_store::Error> for LoadErr {
-    fn from(e: cookie_store::Error) -> Self { LoadErr::Store(e) }
+    fn from(e: cookie_store::Error) -> Self {
+        LoadErr::Store(e)
+    }
 }
 impl From<time::error::ComponentRange> for LoadErr {
-    fn from(e: time::error::ComponentRange) -> Self { LoadErr::Time(e) }
+    fn from(e: time::error::ComponentRange) -> Self {
+        LoadErr::Time(e)
+    }
 }
 impl From<url::ParseError> for LoadErr {
-    fn from(e: url::ParseError) -> Self { LoadErr::Url(e) }
+    fn from(e: url::ParseError) -> Self {
+        LoadErr::Url(e)
+    }
 }
 
 pub fn parse_cookie_txt(path: &str) -> Result<reqwest_cookie_store::CookieStore, LoadErr> {
@@ -54,9 +61,9 @@ pub fn parse_cookie_txt(path: &str) -> Result<reqwest_cookie_store::CookieStore,
             .path(c.path.as_str())
             .secure(c.https_only)
             .http_only(c.http_only);
-        let domain = if c.domain.ends_with("163.com"){
+        let domain = if c.domain.ends_with("163.com") {
             NCMEAPI_DOMAIN
-        }else{
+        } else {
             c.domain.as_str()
         };
 
@@ -72,12 +79,10 @@ pub fn parse_cookie_txt(path: &str) -> Result<reqwest_cookie_store::CookieStore,
         let url = Url::parse(&format!("https://{}", domain)).unwrap();
 
         match cookie_store::Cookie::try_from_raw_cookie(&raw, &url) {
-            Ok(cookie) => {
-                match store.insert(cookie.into_owned(), &url) {
-                    Ok(_) => {},
-                    Err(e) => eprintln!("skip {}: {}", c.name, e),
-                }
-            }
+            Ok(cookie) => match store.insert(cookie.into_owned(), &url) {
+                Ok(_) => {}
+                Err(e) => eprintln!("skip {}: {}", c.name, e),
+            },
             Err(e) => eprintln!("skip {}: {}", c.name, e),
         }
     }

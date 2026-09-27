@@ -242,6 +242,7 @@ fn write_audio_metadata(
     if let Some(d) = &release_date {
         // 完整日期 → 标准字段（ID3v2: TDRC；Vorbis: DATE；MP4: ©day）
         tag.insert_text(ItemKey::RecordingDate, d.clone());
+        tag.insert_text(ItemKey::ReleaseDate, d.clone());
 
         // 我不写 Year 了，在FLAC和MP3同时存在的场景这样写Navidrome会出现问题
         // 同时写一份纯年份，兼容只认 YEAR 的老播放器 / 老设备
